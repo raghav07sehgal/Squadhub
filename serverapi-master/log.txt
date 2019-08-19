@@ -1,0 +1,5 @@
+
+> node-api@ start E:\raghav\RTS\serverapi
+> nodemon --watch app app/server.js
+
+Terminate batch job (Y/N)? 

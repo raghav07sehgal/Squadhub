@@ -1,0 +1,85 @@
+  
+  /* dashboard css */
+  .dashboardContainer{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: url("../../assets/backgroundImage.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    overflow-y: auto;
+  }
+  .dashboardMainHolder{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 20%;
+    padding: 10px 0;
+  }
+  
+  .input-container{
+    width: 100%;
+    max-width: 350px;
+    padding: 12px;
+    border: 0;
+    background: #fff;
+    opacity: 0.5;
+    border-radius: 6px;
+    text-align: center;
+    font-size:18px;
+  }
+  .input-container:focus, .input-container:hover{
+    outline: 0;
+  }
+  .inputDivContainer{
+    margin-bottom: 15px;
+  }
+  .input-container::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #000;
+    z-index: 1;
+  }
+  .input-container::-moz-placeholder { /* Firefox 19+ */
+    color: #000;
+    z-index: 1;
+  }
+  .input-container:-ms-input-placeholder { /* IE 10+ */
+    color: #000;
+    z-index: 1;
+  }
+  .input-container:-moz-placeholder { /* Firefox 18- */
+    color: #000;
+    z-index: 1;
+  }
+  .customInputCss_1{
+    opacity: 0.8;
+    cursor: pointer;
+    /* border: 2px solid #fff; */
+    font-family: Bradley Hand ITC;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .customInputCss_1:hover{
+    background-color: #00aeef;
+    /* border: 2px solid #000; */
+    opacity: 1;
+  }
+  .customInputCss_1:focus, 
+  .customInputCss_1:active{
+    background-color: #92d050;
+    /* border: 2px solid #000; */
+    opacity: 1;
+  }
+  
+  .fontCustomCss-3{
+    font-size: 36px;
+    font-family: Century Gothic;
+    margin-bottom: 60px;
+  }
+  .fontCustomCss-4{
+    margin-bottom: 5px;
+    font-size: 32px;
+    font-family: Century Gothic;
+    color: #ffc000;
+  }
+ 

@@ -1,0 +1,22 @@
+[
+    {
+        "config": {
+            "authURL": "cep.niit.com",
+            "httpPort": 3000,
+            "httpsPort": 4443,
+            "baseJQL": "jql=project%20%3D%20%22CEP%20Service%20Desk%22",
+            "jqlStrl": "project=CSD AND status not in (Closed, Declined, Suspended, Cancelled)",
+            "jqlStrl1": "project='CEP Service Desk' AND createdDate>='2018/05/20 00:00' AND createdDate<='2018/06/19 23:00'",
+            "jqlToBePlanned": "project = 'CEP Service Desk' AND status in",
+            "cepJqlString": "project=CSD AND status not in (Closed, Declined, Suspended, Cancelled)"
+        },
+        "emailConfig": {
+            "isSendEmail": false,
+            "auth": {
+                "user": "sshuame1@gmail.com",
+                "pass": "SeaW0r!dss"
+            },
+            "ticket_link": "https://cep.niit.com/browse/"
+        }
+    }
+]

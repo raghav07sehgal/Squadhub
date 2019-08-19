@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base href="/" />
+    <title>SquadHub</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="icon" href="assets/favicon.png" sizes="16x16" type="image/png">
+    <!-- bootstrap css -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- <link href="styles.css" rel="stylesheet" /> -->
+
+    <!-- bootstrap js files -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+</head>
+
+<body class="customizeRtsScrollBar">
+    <app>Loading...</app>
+
+    <style>
+        a {
+            cursor: pointer
+        }
+
+        /**Calender Css**/
+
+        .calenderPopUpViewContainer .custom-day[_ngcontent-c1] {
+            width: 2.7rem !important;
+            font-family: Century Gothic;
+            font-weight: 500;
+            font-size: 12px;
+            padding: 0.485rem 0.25rem;
+        }
+
+        .calenderPopUpViewContainer .custom-day.range[_ngcontent-c1],
+        .calenderPopUpViewContainer .custom-day[_ngcontent-c1]:hover {
+            width: 100% !important;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-day[_ngcontent-c1],
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c1],
+        .calenderPopUpViewContainer .ngb-dp-week-number[_ngcontent-c1] {
+            width: 2.7rem !important;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-header[_ngcontent-c1] {
+            width: 100% !important;
+            background-color: rgb(232, 232, 232) !important;
+            color: #000;
+            font-family: Century Gothic;
+            font-size: 12px;
+            padding-top: 0;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-day[_ngcontent-c1]:focus,
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c1]:focus,
+        .calenderPopUpViewContainer .ngb-dp-week-number[_ngcontent-c1]:focus {
+            outline: 0;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c1] {
+            color: #00aeef !important;
+            font-family: Century gothic;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .calenderPopUpViewContainer [_nghost-c3] {
+            width: 100% !important;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-month[_ngcontent-c3] {
+            width: 35% !important;
+        }
+
+        .calenderPopUpViewContainer .custom-day.range[_ngcontent-c3],
+        .calenderPopUpViewContainer .custom-day[_ngcontent-c1]:hover {
+            width: 100%;
+        }
+
+        .calenderPopUpViewContainer .custom-day[_ngcontent-c3] {
+            width: 2.7rem !important;
+            font-family: Century Gothic;
+            font-weight: 500;
+            font-size: 12px;
+            padding: 0.485rem 0.25rem;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-day[_ngcontent-c3],
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c3],
+        .calenderPopUpViewContainer .ngb-dp-week-number[_ngcontent-c3] {
+            width: 2.7rem !important;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-header[_ngcontent-c3] {
+            width: 100% !important;
+            background-color: rgb(232, 232, 232) !important;
+            color: #000;
+            font-family: Century Gothic;
+            font-size: 12px;
+            padding-top: 0;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-day[_ngcontent-c3]:focus,
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c3]:focus,
+        .calenderPopUpViewContainer .ngb-dp-week-number[_ngcontent-c3]:focus {
+            outline: 0;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c3] {
+            color: #00aeef !important;
+            font-family: Century gothic;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .calenderPopUpViewContainer [_nghost-c5] {
+            width: 100% !important;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-month[_ngcontent-c5] {
+            width: 35% !important;
+        }
+
+        .calenderPopUpViewContainer .custom-day.range[_ngcontent-c5],
+        .calenderPopUpViewContainer .custom-day[_ngcontent-c1]:hover {
+            width: 100% !important;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-arrow-btn[_ngcontent-c5] {
+            color: rgba(127, 127, 127, 0.7) !important;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-arrow-btn[_ngcontent-c5]:hover {
+            color: #bfbaba !important;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-day[_ngcontent-c5],
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c5],
+        .calenderPopUpViewContainer .ngb-dp-week-number[_ngcontent-c5] {
+            width: 2.7rem !important;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-header[_ngcontent-c5] {
+            width: 100% !important;
+            background-color: rgb(232, 232, 232) !important;
+            color: #000;
+            font-family: Century Gothic;
+            font-size: 12px;
+            padding-top: 0;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-day[_ngcontent-c5]:focus,
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c5]:focus,
+        .calenderPopUpViewContainer .ngb-dp-week-number[_ngcontent-c5]:focus {
+            outline: 0;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c5] {
+            color: #00aeef !important;
+            font-family: Century gothic;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .calenderPopUpViewContainer .custom-day[_ngcontent-c6] {
+            width: 2.7rem !important;
+            font-family: Calibri;
+            font-weight: 500;
+        }
+
+        .calenderPopUpViewContainer [_nghost-c6] {
+            width: 100% !important;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-month[_ngcontent-c6] {
+            width: 35% !important;
+        }
+
+        .calenderPopUpViewContainer .custom-day[_ngcontent-c6] {
+            width: 2.7rem !important;
+            font-family: Century Gothic;
+            font-weight: 500;
+            font-size: 12px;
+            padding: 0.485rem 0.25rem;
+        }
+
+        .calenderPopUpViewContainer .custom-day.range[_ngcontent-c6],
+        .calenderPopUpViewContainer .custom-day[_ngcontent-c6]:hover {
+            width: 100% !important;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-day[_ngcontent-c6],
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c6],
+        .calenderPopUpViewContainer .ngb-dp-week-number[_ngcontent-c6] {
+            width: 2.7rem !important;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-day[_ngcontent-c6]:focus,
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c6]:focus,
+        .calenderPopUpViewContainer .ngb-dp-week-number[_ngcontent-c6]:focus {
+            outline: 0;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-header[_ngcontent-c6] {
+            width: 100% !important;
+            font-family: Century Gothic;
+            font-weight: 500;
+            font-size: 12px;
+            padding: 0.485rem 0.25rem;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c6] {
+            color: #00aeef !important;
+            font-family: Century gothic;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-arrow-btn[_ngcontent-c7] {
+            color: rgba(127, 127, 127, 0.7) !important;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-arrow-btn[_ngcontent-c7]:hover {
+            color: #bfbaba !important;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-day[_ngcontent-c7],
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c7],
+        .calenderPopUpViewContainer .ngb-dp-week-number[_ngcontent-c7] {
+            width: 2.7rem !important;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-header[_ngcontent-c7] {
+            width: 100% !important;
+            background-color: rgb(232, 232, 232) !important;
+            color: #000;
+            font-family: Century Gothic;
+            font-size: 12px;
+            padding-top: 0;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-day[_ngcontent-c7]:focus,
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c7]:focus,
+        .calenderPopUpViewContainer .ngb-dp-week-number[_ngcontent-c7]:focus {
+            outline: 0;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c7] {
+            color: #00aeef !important;
+            font-family: Century gothic;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-day[_ngcontent-c8],
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c8],
+        .calenderPopUpViewContainer .ngb-dp-week-number[_ngcontent-c8] {
+            width: 2.7rem !important;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-header[_ngcontent-c6] {
+            width: 100% !important;
+            background-color: rgb(232, 232, 232) !important;
+            color: #000;
+            font-family: Century Gothic;
+            font-size: 12px;
+            padding-top: 0;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-day[_ngcontent-c8]:focus,
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c8]:focus,
+        .calenderPopUpViewContainer .ngb-dp-week-number[_ngcontent-c8]:focus {
+            outline: 0;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c8] {
+            color: #00aeef !important;
+            font-family: Century gothic;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c9] {
+            color: #00aeef !important;
+            font-family: Century gothic;
+            font-weight: 600;
+            font-size: 12px;
+
+        }
+
+        .calenderPopUpViewContainer .text-muted {
+            background-color: transparent !important;
+            color: rgba(108, 117, 125, 0.5) !important;
+        }
+
+        /*---------------------media queries -------------------------*/
+
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .calenderPopUpViewContainer .ngb-dp-day[_ngcontent-c1],
+            .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c1],
+            .calenderPopUpViewContainer .ngb-dp-week-number[_ngcontent-c1] {
+                width: 1.5rem !important;
+            }
+            .calenderPopUpViewContainer .ngb-dp-day[_ngcontent-c3],
+            .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c3],
+            .calenderPopUpViewContainer .ngb-dp-week-number[_ngcontent-c3] {
+                width: 1.5rem !important;
+            }
+            .calenderPopUpViewContainer .ngb-dp-day[_ngcontent-c6],
+            .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c6],
+            .calenderPopUpViewContainer .ngb-dp-week-number[_ngcontent-c6] {
+                width: 1.5rem !important;
+            }
+            .calenderPopUpViewContainer .ngb-dp-day[_ngcontent-c8],
+            .calenderPopUpViewContainer .ngb-dp-weekday[_ngcontent-c8],
+            .calenderPopUpViewContainer .ngb-dp-week-number[_ngcontent-c8] {
+                width: 1.5rem !important;
+            }
+        }
+    </style>
+</body>
+
+</html>

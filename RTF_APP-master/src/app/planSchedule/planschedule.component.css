@@ -1,0 +1,1369 @@
+.planSheduleView{
+  padding: 0;
+  padding-top: 46px;
+  border-bottom: 2px solid rgb(118,133,133);
+}
+.planShedulemainContainer{
+  margin: 0;
+}
+.planSheduleViewLeft {
+  background-color: rgb(0, 174, 239);
+  padding: 0;
+}
+.planSheduleViewRight {
+  height: 100%;
+}
+.calenderAddressDivView {
+  border: 1px solid rgb(64,64,64);
+}
+.noRecordContent{
+    color: #fff;
+    font-family: Century gothic;
+    font-size: 14px;
+    line-height: 5;
+}
+.switchButtonHolder{
+    background-image: url('../../assets/switchButton.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 5px 0;
+    background-position: 0px;
+    width: 100%;
+    max-width: 150px;
+    cursor: pointer;
+}
+.switchButtonHolder .text{
+  font-size: 12px;
+  color: #000;
+  text-align: center;
+  font-family: Trebuchet MS;
+}
+
+.searchContainer input{
+    border: 0;
+    background-color: rgba(117, 112, 112);
+    color: #fff;
+    border-radius: 25px;
+    padding: 3px 10px;
+    width: 100%;
+    max-width: 200px;
+    text-indent: 10px;
+    margin-right: 10px;
+    background-image: url('../../assets/searchIcon.png') ;
+    background-repeat: no-repeat;
+    background-position: 95% 50%;
+    padding-right: 34px;
+    background-size: 14px;
+    height: 30px;
+    font-family: Century Gothic;
+    font-size: 12px;
+}
+.searchIconDiv{
+  display: inline-block;
+  width: 28px;
+  height: auto;
+  display: none;
+}
+.searchContainer img{
+  width: 14px;
+  height: 14px;
+  vertical-align: baseline;
+}
+.searchContainer input:hover, .searchContainer input:focus{
+  outline: 0;
+}
+.searchContainer input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #fff;
+}
+.searchContainer input::-moz-placeholder { /* Firefox 19+ */
+  color: #fff;
+}
+.searchContainer input:-ms-input-placeholder { /* IE 10+ */
+  color: #fff;
+}
+.searchContainer input:-moz-placeholder { /* Firefox 18- */
+  color: #fff;
+}
+.searchBoxContainer{
+    background-color: rgb(206,206,206);
+    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding: 1px;
+    cursor: pointer;
+}
+.flexCss{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.flexCss_1{
+    display: -ms-flexbox;
+    display: flex;
+
+}
+.userContentData{
+    font-family: Century Gothic;
+    font-size: 25px;
+    color: #fff;
+    height: 100%;
+    padding-left: 8px;
+    padding-top: 10px;
+}
+.customfont-15{
+  font-size: 15px;
+}
+.userBottomText{
+    font-family: Calibri;
+    font-size: 11px;
+    line-height: 0;
+}
+.planSheduleView .usersData{
+  padding: 4px 5px 5px 5px;
+  height: 100%;
+  max-height: 75px;
+}
+.planSheduleView .usersData::after{
+  content: '';
+  width:100%;
+  height:1px;
+  position: absolute;
+  top: 0;
+  right:0;
+  background-repeat: repeat-x;
+  background:url("../../assets/borderBottomImage.png");
+
+}
+.userDisplayCollectionsData{
+  height: 100%;
+  overflow-y: hidden;
+}
+.arrowRight{
+  text-align: right;
+  line-height: 4.6;
+  width: 5%;
+}
+.arrowRight img{
+  max-width: 52%;
+  cursor: pointer;
+}
+.userDisplayCollectionsData > div{
+  display: inline-block;
+  float: left;
+}
+.userDisplayCollectionsData > div::after{
+  content:'';
+  clear: left;
+  display: block;
+}
+.displayUserProfile{
+    width: auto;
+    height: 44px;
+    position: relative;
+}
+.displayUserProfile > div{
+  display: inline-block;
+}
+.displayUserProfile img{
+  width: 44px;
+  height: 44px;
+  vertical-align: top;
+  border-radius: 50%;
+  margin-right: 4px;
+  -webkit-transform: translateX(15px);
+  transform: translateX(15px);
+}
+.userDisplaySkills{
+  margin-top: 4px;
+  margin-left: -3px;
+}
+
+.userDisplaySkills > div{
+  line-height: 1;
+  font-size: 9px;
+  width: 35px;
+  border: 1px solid #fff;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  text-align: center;
+  color: #fff;
+  padding: 0.5px 0;
+  padding-left: 8px;
+}
+.displayUserHours{
+    font-size: 11px;
+    padding: 1px;
+    font-family: Calibri;
+    text-align: center;
+    color: #fff;
+    line-height: 1;
+    overflow: hidden;
+}
+.displayUserHours .text{
+  overflow: hidden;
+}
+/*--------------- user display data rgb colors -------------------*/
+.color_1{
+  background: rgb(146,208,80);
+}
+.color_2{
+  background: rgb(0,145,240);
+}
+.color_3{
+  background: rgb(237,145,49);
+}
+.planSheduleViewTopBand{
+  padding: 0;
+}
+.mg-top-30{
+  margin-top:30%;
+}
+.mg-top-70{
+  margin-top:70%;
+}
+
+.planSheduleViewTopBand select{
+    border: 1;
+    background-color: rgb(89,89,89);
+    color: #fff;
+    font-family: Century Gothic;
+    font-size: 18px;
+    border-radius: 0;
+    cursor: pointer;
+    height: calc(2.25rem + 17px);
+    height: -webkit-calc(2.25rem + 17px);
+    height: -moz-calc(2.25rem + 17px);
+    height: -o-calc(2.25rem + 17px);
+    text-align: center;
+    text-align-last: center;
+    min-height: 34px;
+    max-height: 34px;
+}
+
+.borderClass select{
+  border-bottom: 0;
+}
+.searchText{
+  text-align: center;
+}
+.planSheduleViewTopBand select option{
+    font-size: 14px;
+    font-family: Century Gothic;
+    cursor: pointer;
+    font-weight: 500;
+
+}
+.userStatusText{
+    background: rgb(127,127,127);
+    padding: 5px 5px;
+    color: #fff;
+    font-family: Century Gothic;
+    font-size: 12px;
+    text-align: center;
+}
+
+.userStatus{
+  background: rgb(127,127,127);
+  padding: 2px 5px;
+  color: #fff;
+  font-family: Century Gothic;
+  font-size: 14px;
+  text-align: center;
+}
+
+.planSheduleViewTopBand .text{
+  background-color: rgb(89,89,89);
+  color: #fff;
+  text-align: center;
+  padding: 1px 5px;
+  font-family: Century Gothic;
+  font-size: 12px;
+}
+.loggedHrsDiv{
+  background: #7f7f7f;
+  max-height: 150px;
+  height: 100%;
+}
+.customHeight{
+  height: 100%;
+  max-height: 75px;
+}
+.userStatusText span{
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.color_10{
+  color: #ffbc00;
+}
+.planSheduleViewTopBand .text > div{
+    font-size: 24px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #92cf4a;
+  }
+.calenderStartEndData{
+    background-color: rgb(242,242,242);
+    padding: 1px 6px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-family: Century Gothic;
+    font-size: 14px;
+    color: #696666;
+    letter-spacing: 1px;
+    max-height: 34px;
+    height: 100%;
+    width: 321px;
+}
+.calenderStartEndData input{
+    background: #f2f2f2;
+    border: 0;
+    color: #696666;
+    padding: 3px 5px;
+    /* border-bottom: 1px solid rgba(64, 64, 64, 0.4); */
+    width: 100%;
+    max-width: 100px;
+    text-align: center;
+}
+.userHoursSelectDiv select{
+    text-align: center;
+    border-radius: 0;
+    max-width: 60%;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    height: calc(2.25rem + -2px);
+    height: -webkit-calc(2.25rem + -2px);
+    height: -moz-calc(2.25rem + -2px);
+    height: -o-calc(2.25rem + -2px);
+    color: #696666;
+}
+.userHoursSelectDiv select:focus, .userHoursSelectDiv select:hover{
+  outline: 0;
+  border-color: #ced4da;
+}
+.custom-day {
+  text-align: center;
+  padding: 0.185rem 0.25rem;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+  font-family: Calibri;
+  font-weight: 500;
+}
+.loggedHrsDiv hr{
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  border: 0;
+  border-top: 1px solid rgb(206, 206, 206);
+  width: 55%;
+}
+.custom-day.focused {
+  background-color: #e6e6e6;
+}
+.custom-day.range, .custom-day:hover {
+  background-color: rgb(2, 117, 216);
+  color: white;
+}
+.custom-day.faded {
+  background-color: rgba(2, 117, 216, 0.5);
+}
+
+[_nghost-c2] {
+margin-left: 15px;
+margin-top: 15px;
+width: 100%;
+}
+
+.calenderAddressView{
+  background-color: #000;
+  padding: 20px 0;
+  overflow: hidden;
+}
+.calenderAddressView .bottomText{
+    font-family: Century Gothic;
+    font-size: 10px;
+    color: #fff;
+    line-height: 1;
+    cursor: pointer;
+}
+.calenderAddressView .calenderIcon{
+  width: 35px;
+  height: 35px;
+  margin: 0 auto;
+  cursor: pointer;
+  background: url('../../assets/icons.png');
+}
+.calenderAddressView .calenderIcon.icon_5{
+  background-position: 92px -7px;
+}
+.calenderAddressView .calenderIcon.icon_5:hover{
+  background-position: 92px -107px;
+}
+.calenderAddressView .calenderIcon.icon_5.active{
+  background-position: 92px -57px;
+}
+.calenderAddressView .calenderIcon.icon_6{
+  background-position: 42px -7px;
+}
+.calenderAddressView .calenderIcon.icon_6:hover{
+  background-position: 42px -107px;
+}
+.calenderAddressView .calenderIcon.icon_6.active{
+  background-position: 42px -57px;
+}
+.mg-25{
+  margin-bottom: 25px;
+}
+.calenderTopView{
+  display: block;
+}
+.calenderTopView img{
+  max-width: 55%;
+  cursor: pointer;
+}
+.bg-colorWhite{
+  background-color: #fff;
+  height: 100%;
+  max-height: calc(100% - 325px);
+  max-height: -webkit-calc(100% - 325px);
+  max-height: -moz-calc(100% - 325px);
+  max-height: -o-calc(100% - 325px);
+}
+.mainScheduleContainer{
+  height: 100%;
+}
+.bg-colorWhite .row{
+  height: 100%;
+}
+.buttonContainer1{
+  background-color: rgb(84,84,84);
+  border: 0;
+  padding: 8px 25px;
+  font-size: 12px;
+  color: #fff;
+  cursor: pointer;
+  width: 150%;
+  max-width: 200px;
+  border-radius: 6px;
+  margin-left: 15px;
+}
+.buttonContainer1:focus, .buttonContainer1:hover{
+  outline: 0;
+}
+
+.buttonContainer{
+  background-color: rgb(84,84,84);
+  border: 0;
+  padding: 8px 25px;
+  font-size: 12px;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  max-width: 150px;
+  border-radius: 6px;
+}
+.buttonContainer:focus, .buttonContainer:hover{
+  outline: 0;
+}
+
+.eidtButtonContainer{
+  margin: 0px 0px 0px 78px;
+  background-color: rgb(84,84,84);
+  border: 0;
+  padding: 8px 25px;
+  font-size: 12px;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  max-width: 150px;
+  border-radius: 6px;
+}
+.eidtButtonContainer:focus, .eidtButtonContainer:hover{
+  outline: 0;
+}
+.calenderPopUpViewContainer, .addressPopUpViewContainer{
+  position: relative;
+  height: 100%;
+}
+
+.tooltipCss::before{
+  content: "";
+  position: absolute;
+  left: -23px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent transparent #0c0c0c transparent;
+  z-index: 1;
+  border-right: 20px solid #ffffff;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}
+.tooltipCss::after{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -10px;
+    border-style: solid;
+    border-color: transparent transparent #00aeef transparent;
+    z-index: 1;
+    border-right: 12px solid #00aeef;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+}
+.calenderPopUpViewContainer::before{
+  top: 27px;
+}
+.calenderPopUpViewContainer::after{
+  top: 35px;
+}
+.addressPopUpViewContainer::after{
+  top: 98px;
+}
+.addressPopUpViewContainer::before{
+  top: 90px;
+}
+.addressPopUpViewContainer .headerView{
+  background: #7f7f7f;
+  color: #fff;
+  font-family: Century gothic;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 0;
+}
+.addressPopUpViewContainer .headerView > div{
+  line-height: 1.2;
+}
+.modal-backdrop{
+  background-color: rgb(200,200,200) !important;
+}
+/*---------------------- Toggle Switch Button Css ------------*/
+.toggleSwitchContainer .switch{
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 110px;
+  height: 30px;
+  padding: 3px;
+  margin: 0 10px 10px 0;
+  border-radius: 18px;
+  cursor: pointer;
+  box-sizing: content-box;
+  margin: 0;
+}
+.toggleSwitchContainer .switch-flat{
+    padding: 0;
+    background: #94c94d;
+    background-image: none;
+    color: #fff;
+}
+.toggleSwitchContainer input:checked + .switch-label{
+  background-color: #000000;
+}
+.toggleSwitchContainer input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    box-sizing: content-box;
+}
+.switch-label, .switch-handle{
+  transition: All 0.3s ease;
+    -webkit-transition: All 0.3s ease;
+    -moz-transition: All 0.3s ease;
+    -o-transition: All 0.3s ease;
+}
+.switch-flat .switch-input:checked ~ .switch-handle{
+  left: 84px;
+  box-shadow: none;
+}
+.switch-flat .switch-handle{
+    top: 4px;
+    left: 6px;
+    background: #dadada;
+    width: 22px;
+    height: 22px;
+    box-shadow: none;
+}
+.switch-handle:before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -7px 0 0 -7px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid #7f7f7f;
+}
+.switch-input{
+  position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    box-sizing: content-box;
+}
+.switch-input:checked ~ .switch-label:before{
+  opacity: 0;
+}
+.switch-label:before{
+  content: attr(data-off);
+  right: 15px;
+}
+.switch-label:before, .switch-label:after{
+  position: absolute;
+    top: 50%;
+    margin-top: -5px;
+    line-height: 1;
+    -webkit-transition: inherit;
+    -moz-transition: inherit;
+    -o-transition: inherit;
+    transition: inherit;
+    box-sizing: content-box;
+}
+.switch-input:checked ~ .switch-label:after{
+  opacity: 1;
+}
+
+.switch-label:after{
+  content: attr(data-on);
+    left: 11px;
+    color: #FFFFFF;
+    opacity: 0;
+}
+.switch-label{
+    position: relative;
+    display: block;
+    height: inherit;
+    font-size: 10px;
+    text-transform: uppercase;
+    border-radius: inherit;
+    box-sizing: content-box;
+}
+
+.switch-handle{
+  position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
+    background-image: -webkit-linear-gradient(top, #FFFFFF 40%, #f0f0f0);
+    border-radius: 100%;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+.spanRight-8::before{
+  right: 18px;
+}
+.calenderCss{
+  padding: 5px 30px;
+}
+
+/*---------------------Dropdown skills ------------------**/
+.skill_css_1 {
+  height: 1.95rem !important;
+  font-size: 14px;
+  font-family: Century Gothic;
+  background-color: rgba(117, 112, 112);
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  text-align-last: center;
+}
+
+/*-------------------------- Checkbox Css ----------------------**/
+.checkBoxContainer{
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  z-index: 1;
+}
+.checkBoxContainer input{
+    position: absolute;
+    top: 8px;
+    left: 1px;
+    opacity: 0;
+}
+.checkBoxContainer input[type="checkbox"] + label span{
+  display: inline-block;
+  width: 18px;
+  height: 19px;
+  margin: -2px 10px 0 5px;
+  vertical-align: middle;
+  background: url('../../assets/check_radio_sheet.png') left top no-repeat;
+  cursor: pointer;
+
+}
+.checkBoxContainer input[type="checkbox"]:checked + label span{
+  background: url('../../assets/check_radio_sheet.png') -19px top no-repeat !important;
+}
+.bookResourcesCheckBoxContainer{
+  position: relative;
+}
+.bookResourcesCheckBoxContainer .checkBoxContainer{
+  left: 10%;
+  top: -15%;
+}
+.bookResourcesCheckBoxContainer .profileIcon{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+.bookResourceHrs span{
+  font-family: Century Gothic;
+  /* font-weight: bold; */
+  font-size: 12px;
+}
+
+.color_5{
+  background: rgb(255,192,0);
+}
+.mg-bottom-25{
+  margin-bottom: 25px;
+}
+.userDisplayData{
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 1px;
+  margin-right: 5px;
+  padding-top: 4px;
+  padding-bottom: 10px;
+  border-radius: 2px;
+  max-width: 90px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.userDisplayData .userDisplayInformation{
+  position: absolute;
+}
+.userDisplayData .usersnumber{
+  background: #02a4e0;
+  border-radius: 50%;
+  width: 18px;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  height: 18px;
+  z-index: 1;
+}
+
+.userDisplayData  .usersnumber span{
+  color: #fff;
+  font-size: 10px;
+  text-align: center;
+  display: block;
+  margin-top: 1px;
+}
+drag-scroll{
+  margin-top: 2px !important;
+}
+.middleDiv{
+  width: 90%;
+  overflow: hidden;
+}
+.overflow-scroll{
+  height: 100%;
+  overflow-y: auto;
+  padding-bottom: 30px;
+}
+.switchContainer{
+  position: relative;
+}
+.switchContainer .toggleSwitchContainer{
+    position: absolute;
+    right: 40px;
+    top: 10px;
+}
+.selectedUser{
+  padding-right: 2px !important;
+  padding-left: 2px !important;
+}
+
+.selectedUser .userDataContent{
+  line-height: 2;
+}
+.selectedUser div{
+    font-size: 13px;
+    letter-spacing: 0.6px;
+    color: #fff;
+    line-height: 1.3;
+}
+.customFont{
+  font-size: 24px;
+}
+/*-------------- Custom Padding ----------------**/
+.userSkills{
+    padding: 10px 5px;
+    height: 100%;
+    max-height: 52px;
+    text-align: center;
+}
+.pad-0{
+  padding: 0;
+}
+.padTop-3{
+  padding-top: 3px;
+}
+.customPadding-10{
+  padding-top: 25px;
+  padding-bottom: 5px;
+  margin-bottom: 8px;
+}
+.customPadding_10{
+  padding: 10px 0;
+}
+/*---------------------Border Css------------------------------------*/
+.borderView{
+  border: 1px rgba(64, 64, 64);
+  /* border-radius: 12px; */
+  border-style: solid;
+  width: 95%;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+/*---------------------Records Available Container ------------------------------------*/
+.recordsAvailable{
+  padding-top: 50px;
+  font-family: Century Gothic;
+  font-size: 18px;
+}
+.recordsAvailable img{
+  float: right;
+  max-width: 150%;
+}
+
+/*---------------------Delete Records Container ------------------------------------*/
+.planSheduleView .deleteView::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.deleteView{
+  position: relative;
+}
+.deleteView button{
+  background-color: rgb(84,84,84);
+  border: 0;
+  padding: 8px 25px;
+  font-size: 12px;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  max-width: 150px;
+  border-radius: 6px;
+  position: absolute;
+  top: 8px;
+  right: 26px;
+}
+
+.displayUserProfile .hoverClass{
+  display: none !important;
+}
+
+.displayUserProfile:hover .hoverClass  {
+  display: block !important;
+}
+.plainScheduleContainerView{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(64,64,64);
+}
+.userinfo img{
+  width: 16px;
+  height: auto;
+  cursor: pointer;
+}
+/******************* Confirm Modal Box Css ********************************/
+
+.popUpContainer .modal-dialog{
+  z-index: 1041;
+}
+@media (min-width: 768px){
+  .popUpContainer .modal-dialog{
+      width: 460px;
+  }
+}
+.popUpContainer .modal-content{
+  background: rgb(91,155,213);
+  border: 6px solid rgb(217,217,217);
+  border-radius: 0;
+}
+.popUpContainer .modal-header{
+  border-bottom: 0;
+  padding: 0.2rem 1rem;
+}
+.popUpContainer .modal-footer{
+  border-top: 0;
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+}
+.popUpContainer .modal-footer button{
+  background: rgb(255,192,0)!important;
+  color: #000;
+  font-family: Bradley Hand ITC;
+  font-size: 20px;
+  border: 0;
+  border-radius: 6px;
+  padding: 5px;
+  margin: 0 auto;
+  width: auto!important;
+  font-weight: bold;
+}
+.popUpContainer .modal-footer button:focus{
+  box-shadow: none;
+}
+.popUpContainer .modal-header .close{
+  float: right !important;
+  color: #fffefe;
+  text-shadow: none;
+  opacity: 1;
+}
+.popUpContainer .modal-header .close:focus,
+.popUpContainer .modal-header .close:hover{
+  outline: 0;
+}
+.popUpContainer .modal-body {
+  font-family: Century Gothic;
+  color: #fff;
+  font-size: 18px;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  line-height: 1.2;
+}
+.popUpContainer .modal-content::before,
+.popUpContainer .modal-content::after{
+  top: 100%;
+  left: 20%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.popUpContainer .modal-content:before{
+  border-color: rgba(194, 225, 245, 0);
+  border-top-color: #d9d9d9;
+  border-width: 49px 0px 23px 86px;
+  margin-left: -28px;
+  transform: rotate(-7deg);
+  -webkit-transform: rotate(-7deg); /* Chrome, Opera 15+, Safari 3.1+ */
+  -ms-transform: rotate(-7deg);  /* IE 9 */
+  top: 100%;
+  margin-top: -3px;
+  z-index: -1;
+}
+.popUpContainer .modal-content::after{
+  border-color: rgba(136, 183, 213, 0);
+  border-top-color: rgb(91, 155, 213);
+  border-width: 45px 0px 11px 80px;
+  margin-left: -30px;
+  transform: rotate(-7deg);
+  -webkit-transform: rotate(-7deg); /* Chrome, Opera 15+, Safari 3.1+ */
+  -ms-transform: rotate(-7deg);  /* IE 9 */
+  top: 97%;
+}
+.customCss{
+    color: #000;
+    font-size: 40px;
+}
+/*userDisplayDataPopUpConatiner*/
+.userDetailsPopUpContainer .modal-header{
+  padding: 0.4rem 1rem;
+  background: rgb(0, 174, 239);
+  color: #fff;
+  border-radius: 0;
+}
+.userDetailsPopUpContainer .modal-header h5{
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 0.3px;
+    font-family: Calibri;
+}
+.userDetailsPopUpContainer .modal-header .close{
+    color: #fff;
+    opacity: 1;
+    font-size: 18px;
+}
+.userPopUpMainContainer table thead{
+  background-color: rgb(255, 255, 255) !important;
+}
+.userPopUpMainContainer table thead th{
+  background-color: rgb(255, 255, 255) !important;
+  color: #000 !important;
+  letter-spacing: 0;
+  font-size: 12px;
+  border-bottom: 2px solid #ddd !important;
+  line-height: 1;
+}
+.userPopUpMainContainer .table{
+  border: 0!important;
+}
+.userPopUpMainContainer .table td, .userPopUpMainContainer .table th{
+    padding: 0.65rem .75rem;
+    border: 0px !important;
+    background: #fff;
+    border-bottom: 1px solid #ddd !important;
+}
+.userPopUpMainContainer .table tbody td{
+    color: rgb(42, 42, 42) !important;
+    font-size: 12px;
+    line-height: 1;
+    overflow-wrap: break-word;
+}
+.userPopUpMainContainer .actionView img{
+    width: 0.8rem;
+    height: 0.8rem;
+    cursor: pointer;
+}
+.userinfo{
+  position: absolute;
+  top: 28px;
+  height: 18px;
+  z-index: 1;
+  right: 26px;
+}
+/* Media Queries */
+/* Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+  .plainScheduleContainerView{
+      height: auto;
+  }
+  .userSkills .toggleSwitchContainer{
+      width: 50%;
+  }
+  .userSkills .searchContainer{
+      width: 50%;
+  }
+  .userSkills .switch-label{
+    font-size: 9px;
+    letter-spacing: 1.1px;
+  }
+  .userSkills .switch-label:before, .switch-label:after{
+    top: 53%;
+  }
+  .userSkills .switch-label:before{
+    right: 7px;
+  }
+  .searchContainer input{
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  .userSelectedDiv{
+    display: none;
+  }
+  .calenderAddressView > div{
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+  }
+  .tooltipCss:after,
+  .tooltipCss:before,
+  .calenderCss{
+    display: none;
+  }
+ .mobileViewStartEndDateDiv > div{
+    margin: 10px 0;
+ }
+
+ .mobileViewStartEndDateDiv1 > div{
+  margin: 10px 0;
+}
+ .calenderStartEndData{
+    border: 1px solid rgba(64, 64, 64, 0.6);
+ }
+ .userHoursSelectDiv select{
+    max-width: 100%;
+    text-align: center;
+    text-align-last: center;
+ }
+ .bookViewContainer{
+   text-align: center;
+   margin: 10px 0;
+ }
+ .usersDataContentHolder{
+   width: 30%;
+ }
+ .userDisplayCollectionsData{
+   width: 70%;
+ }
+ .userContentData{
+  font-size: 18px;
+ }
+ .customfont-15{
+  font-size: 12px;
+ }
+ .userBottomText{
+  padding-top: 8px;
+ }
+ .planSheduleViewLeft{
+  height: 277px;
+ }
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .tooltipCss::before{
+    top: 27px;
+    left: -13px;
+    border-right: 15px solid #ffffff;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+  }
+  .tooltipCss::after{
+    left: -9px;
+    top: 34px;
+    border-right: 8px solid #00aeef;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+  }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .tooltipCss::before{
+    top: 27px;
+    left: -13px;
+    border-right: 15px solid #ffffff;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+  }
+  .tooltipCss::after{
+    left: -9px;
+    top: 34px;
+    border-right: 8px solid #00aeef;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+  }
+  .addressPopUpViewContainer::after{
+    top: 100px;
+  }
+  .addressPopUpViewContainer::before{
+    top: 93px;
+  }
+  .calenderStartEndData{
+    text-align: unset;
+    font-size: 12px;
+  }
+  .calenderStartEndData input{
+    max-width: 65px;
+  }
+  .userHoursSelectDiv select{
+    max-width: 100%;
+    padding: 0;
+    text-align: center;
+    text-align-last: center;
+  }
+  .userContentData{
+    font-size: 16px;
+  }
+  .customfont-15{
+    font-size: 12px;
+  }
+  .userBottomText{
+    line-height: 1.1;
+  }
+  .userSkills  .toggleSwitchContainer{
+    max-width: 30%;
+  }
+  .userSkills .searchContainer{
+    max-width: 30%;
+  }
+  .userSkills .selectedUser {
+    max-width: 20%;
+  }
+  .userSkills .userDataContent .customFont{
+    font-size: inherit;
+  }
+}
+
+#manageUsers {
+  padding-right: 500px !important;
+  display: block;
+}
+
+#manageUsers .modal-content {
+  box-shadow: 5px 5px 5px #736f6f;
+  position: absolute !important;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 1000px !important;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: .3rem;
+  outline: 0;
+}
+.userAdjustmentFormLayout table .input-group{
+  flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+}
+.userAdjustmentFormContainer table thead th{
+  padding: 10px;
+  line-height: 1;
+}
+.userAdjustmentFormContainer .form-group{
+  margin-bottom: 0;
+  padding: 10px;
+}
+.userAdjustmentFormContainer .form-control:disabled{
+  background-color: #e9ecef !important;
+  color:rgba(138, 138, 140, 0.9)!important;
+}
+
+.userAdjustmentFormContainer .form-control{
+    border-radius: 0;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    padding: 0.25rem 0.75rem;
+    background: #fff;
+    font-family: calibri;
+}
+
+.userAdjustmentFormContainer .table td,
+.userAdjustmentFormContainer .table th{
+  vertical-align: middle;
+}
+.userAdjustmentFormContainer .addUserButtons img{
+  width: 1.2rem;
+  height: 1rem;
+  cursor: pointer;
+}
+.userAdjustmentFormContainer .addUserButtons button{
+  background: transparent;
+  padding: 2px 4px;
+  margin: 0 3px;
+}
+.userAdjustmentFormContainer .addUserButtons button img{
+  width: 0.8rem;
+  height: auto;
+}
+.userAdjustmentFormContainer .adjustUser input{
+  width: 140px !important;
+  margin: 0 auto;
+  border: 1px solid rgba(137, 138, 136, 0.8);
+  font-family: Calibri;
+  height: auto;
+}
+.hoursDropDownClass{
+  width: 56px !important;
+  margin-left: 15px !important;
+  height: calc(2rem + 1px) !important;
+}
+.rowClass{
+  margin-bottom: 0px !important;
+}
+
+.custom-width {
+  max-width: 700px !important;
+}
+
+.booked-start {
+  margin-left: 24px !important;
+}
+
+.booked-start-btn {
+  padding: 0px !important;
+  margin-right: 35px !important;
+}
+
+.reddot {
+  height: 25px;
+  width: 25px;
+  background-color: #e00f0f;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.greendot {
+  height: 25px;
+  width: 25px;
+  background-color: #1e8611;
+  border-radius: 50%;
+  display: inline-block;
+}
+.scrollClass{
+  height: 400px !important;
+  overflow-y: auto !important;
+}
+.deletebuttonClass{
+  margin-right: 44px;
+  margin-bottom: 0px;
+  margin-top: 8px;
+  text-align: right;
+}
+.scrollMoreClass{
+  height: 300px !important;
+  overflow-y: auto !important;
+}
+
+.searchTicketContainer input{
+  border: 0;
+  background-color: rgba(117, 112, 112);
+  color: #fff;
+  padding: 3px 10px;
+  width: 100%;
+  max-width: 100%;
+  text-indent: 10px;
+  margin-right: 10px;
+  background-image: url('../../assets/searchIcon.png') ;
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+  padding-right: 34px;
+  background-size: 14px;
+  height: 42px;
+  font-family: Century Gothic;
+  font-size: 16px;
+}
+
+.searchTicketContainer img{
+  width: 14px;
+  height: 14px;
+  vertical-align: baseline;
+}
+.searchTicketContainer input:hover, .searchTicketContainer input:focus{
+  outline: 0;
+}
+.searchTicketContainer input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #fff;
+}
+.searchTicketContainer input::-moz-placeholder { /* Firefox 19+ */
+  color: #fff;
+}
+.searchTicketContainer input:-ms-input-placeholder { /* IE 10+ */
+  color: #fff;
+}
+.searchTicketContainer input:-moz-placeholder { /* Firefox 18- */
+  color: #fff;
+}
+.inactiveUserColor{
+  background: #FF0000;
+}
+.totalHoursClass{
+  width: 30%;
+  margin: 16px 1px -41px 18px;
+}
+
+.pleaseWaitCSS{
+  text-align: center;
+  background: #00aeef;
+  color: white;
+  height: auto;
+  font-size: 30px;
+}

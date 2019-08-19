@@ -1,0 +1,370 @@
+﻿<nav class="navbar navbar navbar-expand-md navbar-dark fixed-top">
+    <div class="container-fluid mainScheduleContainer">
+        <div class="navbar-brand">
+            <div title="SquadHub" [routerLink]="['/dashboard']">
+                <span>Squa</span>
+                <span class="mg-right-15 color_6">d</span>
+                <span class="color_6">H</span>ub</div>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <div class="headerIcons icon_1" title="Dashboard" [routerLink]="['/dashboard']">
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="headerIcons icon_2" title="Booking" (click)="gotoNextPage($event, '/planSchedule')">
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown viewReportDropDown">
+                        <div class="customVerticalAlignment headerIcons icon_3" title="View Report" id="dropdownMenuButton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        </div>
+                        <div class="dropdown-menu dropdownMenuButton" aria-labelledby="dropdownMenuButton" style="left: -39px !important;">
+                                <a class="dropdown-item" (click)="gotoNextPage($event, '/userLogged')">User Logged Data</a>
+                                <a class="dropdown-item" (click)="gotoNextPage($event, '/workload')">Work Load</a>
+                                <a class="dropdown-item active" (click)="gotoNextPage($event, '/consolidated')">Consolidated Data</a>
+                                <a class="dropdown-item" (click)="gotoNextPage($event, '/accountReport')">Account View</a>
+                                <a class="dropdown-item" (click)="gotoNextPage($event, '/resourceUtilization')">Resource Utilization</a>
+                                <a class="dropdown-item" (click)="gotoNextPage($event, '/resourceBookingReport')">Resource View</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="headerIcons icon_4" title="Add User" [routerLink]="['/addUser']">
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a _ngcontent-c2="" class="ff1" title="User Profile" id="dropdownMenuProfileButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <img [src]="loginImageURL" class="profileIcon" />
+                        <!-- <img src="assets/arrow.png" class="customVerticalAlignment" /> -->
+                        <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" id="dropDownPro" aria-labelledby="dropdownMenuProfileButton">
+                        <a class="dropdown-item cursorLink">Signed in as
+                            <br/>
+                            <span>{{loginUserName}}</span>
+                        </a>
+                        <hr/>
+                        <a class="dropdown-item" (click)="logout()">Sign out</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<main class="rTSCustomPaddingCss bg-color01" role="main">
+    <div class="container pd-top-60">
+        <div class="row labelLinks">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a [routerLink]="['/reportDashboard']">View Report</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Consolidated Data</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row userCustomTable">
+            <form [formGroup]="cepReportForm" (ngSubmit)="generateCEPReport()">
+                <table st-table="rowCollection" class="table table-striped rsTable rTsCustomizeTable">
+                    <thead class="lH-1">
+                        <tr>
+                            <th width="200">Start Date</th>
+                            <th width="200">End Date</th>
+                            <th width="100">Created Date</th>
+                            <th width="100">Updated Date</th>
+                            <th width="200">Action</th>
+                            <th width="150">Export</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="calendarIcon">
+                                    <div class="input-group">
+                                        <input class="form-control" autocomplete="off" placeholder="yyyy-mm-dd" name="startDate" [(ngModel)]="startDate" ngbDatepicker
+                                            #d1="ngbDatepicker" formControlName="startDate" readonly="readonly" />
+                                        <div class="input-group-append">
+                                            <button class="btn hvr-bounce-to-top" (click)="setStartDate(); d1.toggle();" type="button">
+                                                <img src="assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="calendarIcon endDateClass">
+                                    <div class="input-group">
+                                        <input class="form-control" autocomplete="off" placeholder="yyyy-mm-dd" name="endDate" [(ngModel)]="endDate" ngbDatepicker
+                                            #d2="ngbDatepicker" formControlName="endDate" readonly="readonly" />
+                                        <div class="input-group-append">
+                                            <button class="btn hvr-bounce-to-top" (click)="setEndDate(); d2.toggle();" type="button">
+                                                <img src="assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <label class="radioContainer">
+                                    <input formControlName="filterName" type="radio" value="createdDate" name="filterName" required [(ngModel)]="filterName">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td class="text-center">
+                                <label class="radioContainer">
+                                    <input formControlName="filterName" type="radio" value="updatedDate" name="filterName" required [(ngModel)]="filterName">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <!-- <td class="text-center">
+                                <input formControlName="filterName" type="radio" value="Actual Start Date" name="filterName" required [(ngModel)]="filterName">
+                            </td> -->
+                            <td class="text-center submitButtonView">
+                                <button type="button" class="btn hvr-bounce-to-top" type="submit" [disabled]="!cepReportForm.valid">
+                                    <span class="glyphicon glyphicon-search"></span> Generate CEP Report
+                                </button>
+                            </td>
+                            <td class="submitButtonView">
+                                <button type="button" class="btn hvr-bounce-to-top" (click)="excelReport()" [disabled]="!isEnable">Excel Export</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div class="userCustomTableView">
+            <table datatable *ngIf="currentUser" class="customizeRtsScrollBar table table-striped lh-18 rsTable">
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Project Manager</th>
+                        <th>Delivery Manager</th>
+                        <th>Manager Name</th>
+                        <th>Project Name</th>
+                        <th>Client Name</th>
+                        <th>RAG Status</th>
+                        <th>Project Key</th>
+                        <th>Issue Type</th>
+                        <th>Studio</th>
+                        <th>Created Date</th>
+                        <th>Status</th>
+                        <th>Linked Issue</th>
+                        <th>Sub-Task</th>
+                        <th>Sub-Task Type</th>
+                        <th>Sub-Task Detail</th>
+                        <th>Planned Start Date</th>
+                        <th>Planned End Date</th>
+                        <th>Resource Name</th>
+                        <th>Budgeted Hours (Hrs)</th>
+                        <th>Budgeted Effort (Hrs) - Engineering</th>
+                        <th>Budgeted Effort (Hrs) - Production</th>
+                        <th>User Estimation</th>
+                        <th>User Logged Effort</th>
+                        <th>User Remaining Effort</th>
+                        <th>User Logged Effort Hours</th>
+                        <th>User Logged Effort Date</th>
+                        <th>Requested Start Date</th>
+                        <th>Requested Completion Date</th>
+                        <th>Change Request Hours</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let user of currentUser; let i = index;">
+                        <tr *ngFor="let subtask of user.fields.subtasks;">
+                            <td>
+                                <div>{{currentUser.indexOf(user) + 1}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.customfield_10217">{{user.fields.customfield_10217}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.customfield_10218">{{user.fields.customfield_10218}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.assignee && user.fields.assignee.displayName">{{user.fields.assignee.displayName}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.customfield_10201">{{user.fields.customfield_10201}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.customfield_10600 && user.fields.customfield_10600.value !=null">{{user.fields.customfield_10600.value}}</div>
+                            </td>
+                            <td [ngStyle]="{'backgroundColor': !user.fields.customfield_11000 ? '' : !user.fields.customfield_11000.value? '' : user.fields.customfield_11000.value }">
+                            </td>
+                            <td>
+                                <div *ngIf="user.key !=null">{{user.key}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.issuetype !=null">{{user.fields.issuetype.name}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.customfield_10219 && user.fields.customfield_10219.value">{{user.fields.customfield_10219.value}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.created">{{user.fields.created | date: 'dd-MM-yyyy'}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.status">{{user.fields.status.name}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.issuelinks.length >0 && user.fields.issuelinks[0].outwardIssue">{{user.fields.issuelinks[0].outwardIssue.key}}</div>
+                            </td>
+                            <td>
+                                {{subtask.key}}
+                            </td>
+                            <td>
+                                <div *ngIf="subtask.issuetype">
+                                    {{subtask.issuetype.name}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="subtask.summary">
+                                    {{subtask.summary}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="subtask.plannedStartDate">
+                                    {{subtask.plannedStartDate}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="subtask.plannedEndDate">
+                                    {{subtask.plannedEndDate}}</div>
+                            </td>
+                            <td>
+                                {{subtask.displayName}}
+                            </td>
+                            <td>
+                                {{user.fields.customfield_10244 + user.fields.customfield_10863 + user.fields.customfield_10864+user.fields.customfield_11700}}
+                            </td>
+                            <td>
+                                {{user.fields.customfield_10863}}
+                            </td>
+                            <td>
+                                {{user.fields.customfield_10864}}
+                            </td>
+                            <td>
+                                <div *ngIf="subtask.timetracking && subtask.timetracking.originalEstimate">{{subtask.timetracking.originalEstimate}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="subtask.timetracking && subtask.timetracking.timeSpent">{{subtask.timetracking.timeSpent}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="subtask.timetracking && subtask.timetracking.remainingEstimate">{{subtask.timetracking.remainingEstimate}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="subtask.worklog && subtask.worklog.worklogs">{{subtask.worklog.worklogs.timeSpent}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="subtask.worklog && subtask.worklog.worklogs">{{subtask.worklog.worklogs.created}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.customfield_10225 != null ">{{user.fields.customfield_10225}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.customfield_10226 != null ">{{user.fields.customfield_10226}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.customfield_11700 != null ">{{user.fields.customfield_11700}}</div>
+                            </td>
+                        </tr>
+                        <tr *ngIf="user.fields.subtasks.length <= 0 ">
+                            <td>
+                                <div>{{currentUser.indexOf(user) + 1}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.customfield_10217">{{user.fields.customfield_10217}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.customfield_10218">{{user.fields.customfield_10218}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.assignee && user.fields.assignee.displayName">{{user.fields.assignee.displayName}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.customfield_10201">{{user.fields.customfield_10201}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.customfield_10600 && user.fields.customfield_10600.value !=null">{{user.fields.customfield_10600.value}}</div>
+                            </td>
+                            <td [ngStyle]="{'backgroundColor': !user.fields.customfield_11000 ? '' : !user.fields.customfield_11000.value? '' : user.fields.customfield_11000.value }">
+                            </td>
+                            <td>
+                                <div *ngIf="user.key !=null">{{user.key}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.issuetype !=null">{{user.fields.issuetype.name}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.customfield_10219 && user.fields.customfield_10219.value">{{user.fields.customfield_10219.value}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.created">{{user.fields.created | date: 'dd-MM-yyyy'}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.status">{{user.fields.status.name}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.issuelinks.length >0 && user.fields.issuelinks[0].outwardIssue">{{user.fields.issuelinks[0].outwardIssue.key}}</div>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                {{user.fields.customfield_10244 + user.fields.customfield_10863 + user.fields.customfield_10864+user.fields.customfield_11700}}
+                            </td>
+                            <td>
+                                {{user.fields.customfield_10863}}
+                            </td>
+                            <td>
+                                {{user.fields.customfield_10864}}
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.customfield_10225 != null ">{{user.fields.customfield_10225}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.customfield_10226 != null ">{{user.fields.customfield_10226}}</div>
+                            </td>
+                            <td>
+                                <div *ngIf="user.fields.customfield_11700 != null ">{{user.fields.customfield_11700}}</div>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+<div class="loader" *ngIf="loading">
+    <div class="loaderContainer">
+        <img src="assets/preloader.gif" />
+        <span>{{status}}%</span>
+    </div>
+</div>

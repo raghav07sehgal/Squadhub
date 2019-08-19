@@ -1,0 +1,32 @@
+{
+    "gmail": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "secure": true,
+        "auth": {
+            "user": "niithmh",
+            "pass": "niithmh@123"
+        }
+    },
+    "outlook": {
+        "host": "",
+        "port": 25,
+        "secure": false,
+        "ignoreTLS": false,
+        "tls": {
+            "ciphers": "SSLv3"
+        },
+        "auth": {
+            "user": "",
+            "pass": ""
+        }
+    },
+    "mailOptions": {
+        "from": "Squadhub@niit.com",
+        "to": "",
+        "cc": ["shahid.husain@niit.com", "Niit-prafull.khanduri@niit.com","Niit-emanuel.joseph@niit.com"],
+        "subject": "Squadhub: Resource Availability Report",
+        "text": "",
+        "html": null
+    }
+}

@@ -1,0 +1,35 @@
+﻿<nav class="navbar navbar navbar-expand-md navbar-dark fixed-top"></nav>
+<div class="loginContainer customizeRtsScrollBar">
+    <div class="contentHolder">
+        <div class="container">
+            <div class="row justify-content-md-center text-center">
+
+                <div class="col-md-12 col-sm-12 col-xs-12 fontCustomCss-2 fontFamily">
+                    Squa<span class="marginRight-16">d</span><span>H</span>ub
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 fontCustomCss-3">Resource Booking System</div>
+                <div class="col-md-12 col-sm-12 col-xs-12 fontCustomCss-1 mg-top-25">
+                    Login
+                </div>
+                <form [formGroup]="loginForm" (ngSubmit)="authenticatUser()">
+                    <div class="col-md-12 col-sm-12 col-xs-12 inputDivContainer">
+                        <input type="text" formControlName="username" placeholder="Enter user Name" class="input-container" required="true">
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 inputDivContainer">
+                        <input type="password" formControlName="password" placeholder="Enter password" class="input-container"
+                            required="true">
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 loginButton">
+                        <button>Enter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="loader" *ngIf="loading">
+    <div class="loaderContainer">
+        <img src="assets/preloader.gif" />
+        <span>Wait..</span>
+    </div>
+</div>

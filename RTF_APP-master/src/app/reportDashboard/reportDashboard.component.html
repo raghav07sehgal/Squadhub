@@ -1,0 +1,138 @@
+﻿<nav class="navbar navbar navbar-expand-md navbar-dark fixed-top">
+    <div class="container-fluid mainScheduleContainer">
+        <div class="navbar-brand" [routerLink]="['/dashboard']" title="SquadHub">
+            <span>Squa</span>
+            <span class="mg-right-15 color_6">d</span>
+            <span class="color_6">H</span>ub
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <div class="headerIcons icon_1" title="Dashboard" [routerLink]="['/dashboard']">
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="headerIcons icon_2" title="Booking" (click)="gotoNextPage($event, '/planSchedule')">
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="headerIcons icon_3 disabled" title="View Report">
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="headerIcons icon_4" title="Add User" [routerLink]="['/addUser']">
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a _ngcontent-c2="" title="User Profile" class="ff1" id="dropdownMenuProfileButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <img [src]="loginImageURL" class="profileIcon" />
+                        <img src="assets/arrow.png" class="customVerticalAlignment" />
+                    </a>
+                    <div class="dropdown-menu" id="dropDownPro" aria-labelledby="dropdownMenuProfileButton">
+                        <a class="dropdown-item cursorLink">Signed in as
+                            <br/>
+                            <span>{{loginUserName}}</span>
+                        </a>
+                        <hr/>
+                        <a class="dropdown-item" (click)="logout()">Sign out</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="reportDashboardContainer customizeRtsScrollBar">
+    <div class="reportDashboardMainholder">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-4 col-sm-6 col-xs-12" (click)="gotoNextPage($event, '/workload')">
+                    <div class="reportDashboard-item text-center">
+                        <div class="icon">
+                            <img src="assets/work_load.png" class="img-fluid" />
+                        </div>
+                        <button type="button">Work Load</button>
+                    </div>
+                    <div class="reportDashboard-text text-center">
+                        <span>Calendar View of Bookings</span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12" (click)="gotoNextPage($event, '/consolidated')">
+                    <div class="reportDashboard-item text-center">
+                        <div class="icon">
+                            <img src="assets/consolidated__data.png" class="img-fluid" />
+                        </div>
+                        <button type="button">Consolidated Data</button>
+                        <div class="line-dec"></div>
+                    </div>
+                    <div class="reportDashboard-text text-center">
+                        <span>JIRA consolidated data of all tickets</span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12" (click)="gotoNextPage($event, '/userLogged')">
+                    <div class="reportDashboard-item text-center">
+                        <div class="icon">
+                            <img src="assets/work_allocation.png" class="img-fluid" />
+                        </div>
+                        <button type="button">User Effort Logged Data</button>
+                        <div class="line-dec"></div>
+                    </div>
+                    <div class="reportDashboard-text text-center">
+                        <span>Logged effort in JIRA day-wise & project wise</span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12" (click)="gotoNextPage($event, '/accountReport')">
+                    <div class="reportDashboard-item text-center">
+                        <div class="icon">
+                            <img src="assets/work_load.png" class="img-fluid" />
+                        </div>
+                        <button type="button">Account View</button>
+                    </div>
+                    <div class="reportDashboard-text text-center">
+                        <span>View Account Report</span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12"  (click)="gotoNextPage($event, '/resourceUtilization')">
+                    <div class="reportDashboard-item text-center">
+                        <div class="icon">
+                            <img src="assets/consolidated__data.png" class="img-fluid" />
+                        </div>
+                        <button type="button">Resource Utilization</button>
+                        <div class="line-dec"></div>
+                    </div>
+                    <div class="reportDashboard-text text-center">
+                        <span>CEP: Resource Utilization Trend Report </span>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12" (click)="gotoNextPage($event, '/resourceBookingReport')">
+                    <div class="reportDashboard-item text-center" >
+                        <div class="icon">
+                            <img src="assets/work_allocation.png" class="img-fluid" />
+                        </div>
+                        <button type="button">Resource View</button>
+                        <div class="line-dec"></div>
+                    </div>
+                    <div class="reportDashboard-text text-center">
+                        <span>Resource Booked Report </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+</div>
+
+<div class="loader" *ngIf="loading">
+    <div class="loaderContainer">
+        <img src="assets/preloader.gif" />
+        <span>Wait..</span>
+    </div>
+</div>

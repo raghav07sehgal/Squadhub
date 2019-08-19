@@ -1,0 +1,312 @@
+/***********************
+*******************************************Add User 
+************************/
+.addUserButton button{
+  width: 100%;
+  max-width: 120px;
+  color: #fff;
+  background: #00aeef;
+  letter-spacing: 1px;
+  font-family: Bradley Hand ITC;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 4px;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  float: right;
+}
+.addUserButton button:focus{
+  outline: 0;
+}
+.addUserButton button:active{
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+  outline: none;
+  background: rgba(0, 174, 239, 0.4);
+}
+#adduserPopContainer form{
+  width: 100%;
+}
+#adduserPopContainer .modal-content{
+    border: 0;
+    border-radius: 0;
+}
+#adduserPopContainer .modal-header{
+  padding: 0.4rem 1rem;
+  background: #00aeef;
+  color: #fff;
+  border-radius: 0;
+}
+#adduserPopContainer h5{
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 0.3px;
+    font-family: Calibri;
+}
+#adduserPopContainer .modal-header .close{
+    color: #fff;
+    opacity: 1;
+    font-size: 18px;
+}
+#adduserPopContainer .modal-header .close:focus{
+  outline: 0;
+}
+#adduserPopContainer .modal-body{
+  font-family: Calibri;
+}
+#adduserPopContainer .modal-body label{
+    color: #000 !important;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+}
+#adduserPopContainer .modal-body label.control-label::after{
+  content:"*";
+  color:red;
+}
+#adduserPopContainer .modal-body .form-control{
+    border-radius: 0;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    padding: 0.25rem 0.75rem;
+}
+#adduserPopContainer .modal-body  select{
+  height: calc(1.870rem + 2px);
+  height: -webkit-calc(1.870rem + 2px);
+  height: -moz-calc(1.870rem + 2px);
+  height: -o-calc(1.870rem + 2px);
+  height: -ms-calc(1.870rem + 2px);
+}
+#adduserPopContainer .modal-footer{
+  padding: 0.5rem 1rem;
+}
+#adduserPopContainer .modal-footer button{
+    width: 100%;
+    max-width: 100px;
+    color: #fff;
+    background: #00aeef;
+    letter-spacing: 0.3px;
+    font-family: Calibri;
+    font-size: 14px;
+    padding: 4px;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+#adduserPopContainer .modal-body button img{
+  width: 1.2rem; 
+  height: 1rem; 
+  cursor: pointer;
+}
+#adduserPopContainer .modal-body .input-group-append button{
+  padding: 0.25rem 0.75rem;
+  border-radius: 0;
+  background: #ddd;
+}
+.hvr-bounce-to-top {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.hvr-bounce-to-top:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(247, 242, 242, 0.2);
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-bounce-to-top:hover, .hvr-bounce-to-top:focus, .hvr-bounce-to-top:active {
+  color: white;
+}
+.hvr-bounce-to-top:hover:before, .hvr-bounce-to-top:focus:before, .hvr-bounce-to-top:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+.addUserFormLayout{
+  width: 95%;
+  height: 100%;
+  margin: 0 auto;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+.addUserFormLayout table{
+  margin-bottom: 0;
+}
+.addUserFormLayout table .input-group{
+  flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+}
+.addUserFormContainer table thead th{
+  padding: 10px;
+  line-height: 1;
+}
+.addUserFormContainer .form-group{
+  margin-bottom: 0;
+  padding: 10px;
+}
+.addUserFormContainer .form-control:disabled{
+  background-color: #e9ecef !important;
+  color:rgba(138, 138, 140, 0.9)!important;
+}
+
+.addUserFormContainer .form-control{
+    border-radius: 0;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    padding: 0.25rem 0.75rem;
+    background: #fff;
+    font-family: calibri;
+} 
+.addUserFormContainer .addUserName input{
+    width: 140px !important;
+    margin: 0 auto;
+    border: 1px solid rgba(137, 138, 136, 0.8);
+    font-family: Calibri;
+    height: auto;
+}
+.addUserFormContainer .userSelectType select{
+  width: 140px !important;
+  margin: 0 auto;
+  border: 1px solid rgba(137, 138, 136, 0.8);
+  font-family: Calibri;
+  height: calc(1.870rem + 2px);
+  padding: 0.25rem 0;
+}
+.addUserFormContainer .addUserTextarea textarea{
+    border: 1px solid rgba(137, 138, 136, 0.8);
+    height: 100px;
+    max-height: 32px;
+    overflow: auto;
+    width: 140px !important;
+    margin: 0 auto;
+}
+.addUserFormContainer .calendarIcon input{
+    width: 80px !important;
+    font-size: 12px;
+    padding: 0.10rem 0.3rem;
+    border: 1px solid rgba(137, 138, 136, 0.8);
+}
+
+.addUserFormContainer .calendarIcon .input-group-append button{
+  padding: 0.25rem 0.75rem;
+  border-radius: 0;
+  background: #ddd;
+}
+.addUserFormContainer .calendarIcon .input-group-append button img{
+  width: 1.2rem; 
+  height: 1rem; 
+  cursor: pointer;
+}
+.addUserFormContainer .addUserButtons img{
+  width: 1.2rem; 
+  height: 1rem; 
+  cursor: pointer;
+}
+.addUserFormContainer .addUserButtons button{
+  background: transparent;
+  padding: 2px 4px;
+  margin: 0 3px;
+}
+.addUserFormContainer .addUserButtons button img{
+  width: 0.8rem;
+  height: auto;
+}
+.addUserFormContainer .table td,
+.addUserFormContainer .table th{
+  vertical-align: middle;
+}
+.addUserFormContainer .table-striped tbody tr:nth-of-type(odd){
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.addUserFormContainer .table-striped tbody tr:nth-of-type(odd) td{
+  color: #fff !important;
+}
+.addUserFormContainer .table-striped tbody tr:nth-of-type(odd) .addUserButtons button img{
+  filter: invert(100%);
+}
+.addUserFormContainer .table td,
+.addUserFormContainer .table th{
+  padding: 0px 10px;
+}
+.addUserButtonTableData{
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+.adduserContainer .container-fluid{
+  height: 100%;
+}
+.addUserButtonTableData form{
+  width: 100%;
+}
+
+.headerName{
+  font-family: "Century Gothic";
+  color: #696666;
+  margin-bottom: -1%;
+}
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) { 
+  .addUserFormContaine .table td,
+  .addUserFormContainer .table th{
+    padding: .25rem 0.75rem !important;
+  }
+}
+.checkBoxClass{
+  margin-top: 10px;
+  margin-bottom: -19px;
+  margin-left: -27px;
+} 
+.checkBoxLable{
+  margin-left: 18%;
+  position: absolute;
+  margin-top: 2px;
+}
+.dailogButtonClass{
+  margin-left: 30% !important;
+  margin-right: -15% !important;
+}
+
+.userCountClass {
+  margin: 12px 0px 0px 84px;
+}
+.activeUserClass h3{
+  color: green;
+  font-size: 14px;
+  width: 220px;
+}
+.inactiveUserClass h3{
+  color: red;
+  font-size: 14px;
+  width: 220px;
+  margin-left: 24px;
+}
+.leaveUserCSS{
+  color: red !important;
+}

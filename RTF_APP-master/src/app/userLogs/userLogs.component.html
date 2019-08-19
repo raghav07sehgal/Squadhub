@@ -1,0 +1,319 @@
+﻿<nav class="navbar navbar navbar-expand-md navbar-dark fixed-top">
+	<div class="container-fluid mainScheduleContainer">
+		<div class="navbar-brand">
+			<div title="SquadHub" [routerLink]="['/dashboard']">
+				<span>Squa</span>
+				<span class="mg-right-15 color_6">d</span>
+				<span class="color_6">H</span>ub</div>
+		</div>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+
+			</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<div class="headerIcons icon_1" title="Dashboard" [routerLink]="['/dashboard']">
+					</div>
+				</li>
+				<li class="nav-item">
+					<div class="headerIcons icon_2" title="Booking" (click)="gotoNextPage($event, '/planSchedule')">
+					</div>
+				</li>
+				<li class="nav-item">
+					<div class="dropdown viewReportDropDown">
+						<div class="customVerticalAlignment headerIcons icon_3 " title="View Report"
+							id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						</div>
+						<div class="dropdown-menu dropdownMenuButton" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item active" (click)="gotoNextPage($event, '/userLogged')">User Logged
+								Data</a>
+							<a class="dropdown-item" (click)="gotoNextPage($event, '/workload')">Work Load</a>
+							<a class="dropdown-item" (click)="gotoNextPage($event, '/consolidated')">Consolidated
+								Data</a>
+							<a class="dropdown-item" (click)="gotoNextPage($event, '/accountReport')">Account View</a>
+							<a class="dropdown-item" (click)="gotoNextPage($event, '/resourceUtilization')">Resource
+								Utilization</a>
+							<a class="dropdown-item" (click)="gotoNextPage($event, '/resourceBookingReport')">Resource
+								View</a>
+						</div>
+					</div>
+				</li>
+				<li class="nav-item">
+					<div class="headerIcons icon_4" title="Add User" [routerLink]="['/addUser']">
+					</div>
+				</li>
+				<li class="nav-item">
+					<a _ngcontent-c2="" class="ff1" title="User Profile" id="dropdownMenuProfileButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<img [src]="loginImageURL" class="profileIcon" />
+						<!-- <img src="assets/arrow.png" class="customVerticalAlignment" /> -->
+						<span class="caret"></span>
+					</a>
+					<div class="dropdown-menu" id="dropDownPro" aria-labelledby="dropdownMenuProfileButton">
+						<a class="dropdown-item cursorLink">Signed in as
+							<br />
+							<span>{{loginUserName}}</span>
+						</a>
+						<hr />
+						<a class="dropdown-item" (click)="logout()">Sign out</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<main role="main" class="rTSCustomPaddingCss bg-color01">
+	<div class="container pd-top-60">
+		<div class="row labelLinks">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a [routerLink]="['/reportDashboard']">View Report</a>
+					</li>
+					<li class="breadcrumb-item active" aria-current="page">User Effort Logged Data</li>
+				</ol>
+			</nav>
+		</div>
+		<div class="row userRcLogCustomTable customizeRtsScrollBar">
+			<form [formGroup]="cepReportForm" (ngSubmit)="generateUserLogseport()">
+				<table st-table="rowCollection" class="table table-striped rsTable rTsCustomizeTable">
+					<thead class="userRcLogCustomTable-thead">
+						<tr>
+							<th width="200">Start Date</th>
+							<th width="200">End Date</th>
+							<th width="100">Person Data</th>
+							<th width="100">Project Data</th>
+							<th width="200">Action</th>
+							<th width="150">Export</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<div class="calendarIcon">
+									<div class="input-group">
+										<input class="form-control" autocomplete="off" placeholder="yyyy-mm-dd"
+											name="startDate" [(ngModel)]="startDate" ngbDatepicker #d1="ngbDatepicker"
+											formControlName="startDate" readonly="readonly">
+										<div class="input-group-append">
+											<button class="btn hvr-bounce-to-top" (click)="setStartDate(); d1.toggle();"
+												type="button">
+												<img src="assets/calendar-icon.svg"
+													style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+											</button>
+										</div>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="calendarIcon endDateClass">
+									<div class="input-group">
+										<input class="form-control" autocomplete="off" placeholder="yyyy-mm-dd"
+											name="endDate" [(ngModel)]="endDate" ngbDatepicker #d2="ngbDatepicker"
+											formControlName="endDate" readonly="readonly">
+										<div class="input-group-append">
+											<button class="btn hvr-bounce-to-top" (click)="setEndDate(); d2.toggle();"
+												type="button">
+												<img src="assets/calendar-icon.svg"
+													style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+											</button>
+										</div>
+									</div>
+								</div>
+							</td>
+							<td class="text-center">
+								<label class="radioContainer">
+									<input formControlName="filterName" type="radio" [checked]="options"
+										value="createdDate" name="filterName" required [(ngModel)]="filterName"
+										(change)="calculateUserWorkLogsData()">
+									<span class="checkmark"></span>
+								</label>
+							</td>
+							<td class="text-center">
+								<label class="radioContainer">
+									<input formControlName="filterName" type="radio" [checked]="options"
+										value="updatedDate" name="filterName" required [(ngModel)]="filterName">
+									<span class="checkmark"></span>
+								</label>
+							</td>
+							<td class="text-center submitButtonView">
+								<button type="button" class="btn hvr-bounce-to-top" type="submit"
+									[disabled]="!cepReportForm.valid">
+									<span class="glyphicon glyphicon-search"></span> Generate User Logs Report
+								</button>
+							</td>
+							<td class="submitButtonView">
+								<button type="button" *ngIf="filterName != 'createdDate'" class="btn hvr-bounce-to-top"
+									(click)="excelReport()" [disabled]="!isEnable">Export Project Data</button>
+								<button type="button" *ngIf="filterName == 'createdDate'" class="btn hvr-bounce-to-top"
+									(click)="personExcelReport()" [disabled]="!isEnable">Export Person Data</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+
+		<div class="userRcLogCustomTable-tableView" *ngIf="currentUser && currentUser.length > 0 ">
+			<div class="dropDownClass">
+				<ng-multiselect-dropdown [placeholder]="'select Columns'" [data]="dropdownList"
+					[(ngModel)]="selectedItems" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+					(onSelectAll)="onSelectAll($event)" (onDeSelect)="onItemDeSelect($event)">
+				</ng-multiselect-dropdown>
+			</div>
+			<table datatable *ngIf="filterName != 'createdDate'"
+				class="userLogsRtsTable customizeRtsScrollBar table table-striped lh-23 rsTable" [mfData]="currentUser"
+				#mf="mfDataTable" [mfRowsOnPage]="numberOfPage">
+				<thead>
+					<tr>
+						<ng-container *ngFor="let headder of tableHeadder; let i = index;">
+							<th [hidden]="!headder.isHide">{{headder.value}}</th>
+						</ng-container>
+					</tr>
+				</thead>
+				<tbody>
+					<ng-container *ngFor="let issue of currentUser; let i = index;">
+						<ng-container *ngFor="let subtask of issue[0].fields.subtasks;">
+							<ng-container *ngFor="let worklogs of subtask.worklog.worklogs;">
+								<tr>
+									<td [hidden]="!tableHeadder[0].isHide">
+										<div>{{i}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[1].isHide">
+										<div *ngIf="issue[0].fields.customfield_10217">
+											{{issue[0].fields.customfield_10217}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[2].isHide">
+										<div *ngIf="issue[0].fields.customfield_10218">
+											{{issue[0].fields.customfield_10218}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[3].isHide">
+										<div *ngIf="subtask.csdNo !=null">{{subtask.csdNo}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[4].isHide">
+										<div *ngIf="issue[0].fields.customfield_10600">
+											{{issue[0].fields.customfield_10600.value}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[6].isHide">
+										<div *ngIf="issue[0].fields.customfield_10219">
+											{{issue[0].fields.customfield_10219.value}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[5].isHide">
+										<div *ngIf="issue[0].fields.created">
+											{{issue[0].fields.created | date: 'dd-MM-yyyy'}}</div>
+									</td>
+
+									<td [hidden]="!tableHeadder[7].isHide">
+										<div *ngIf="issue[0].fields.issuetype">{{issue[0].fields.issuetype.name}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[8].isHide">
+										<div *ngIf="issue[0].fields.status !=null">{{issue[0].fields.status.name}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[9].isHide">
+										<div *ngIf="issue[0].key !=null">{{issue[0].key}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[10].isHide">
+										{{subtask.key}}
+									</td>
+									<td [hidden]="!tableHeadder[11].isHide">
+										<div *ngIf="subtask.issuetype">
+											{{subtask.issuetype.name}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[12].isHide">
+										<div *ngIf="subtask.summary">
+											{{subtask.summary}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[13].isHide">
+										<div *ngIf="subtask.plannedStartDate">
+											{{subtask.plannedStartDate | date: 'dd-MM-yyyy'}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[14].isHide">
+										<div *ngIf="subtask.plannedEndDate">
+											{{subtask.plannedEndDate | date: 'dd-MM-yyyy'}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[15].isHide">
+										<div *ngIf="subtask.actualStartDate">
+											{{subtask.actualStartDate | date: 'dd-MM-yyyy'}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[16].isHide">
+										<div *ngIf="subtask.actualEndDate">
+											{{subtask.actualEndDate | date: 'dd-MM-yyyy'}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[17].isHide">
+										<div *ngIf="worklogs && worklogs.author">{{worklogs.author.displayName}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[18].isHide">
+										<div *ngIf="subtask.budgetedEffort">
+											{{subtask.budgetedEffort + subtask.budgetedEffortEngg + subtask.budgetedEffortProd }}
+										</div>
+									</td>
+
+									<td [hidden]="!tableHeadder[19].isHide">
+										<div *ngIf="subtask.budgetedEffortEngg">{{subtask.budgetedEffortEngg}}</div>
+									</td>
+
+									<td [hidden]="!tableHeadder[20].isHide">
+										<div *ngIf="subtask.budgetedEffortProd">{{subtask.budgetedEffortProd}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[21].isHide">
+										<div *ngIf="subtask.aggregatetimeoriginalestimate">
+											{{subtask.aggregatetimeoriginalestimate}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[22].isHide">
+										<div *ngIf="worklogs && worklogs.timeSpent">{{worklogs.timeSpent}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[23].isHide">
+										<div *ngIf="worklogs && worklogs.started">
+											{{worklogs.started | date: 'dd-MM-yyyy'}}</div>
+									</td>
+									<td [hidden]="!tableHeadder[24].isHide">
+										<div *ngIf="worklogs && worklogs.started">
+											{{worklogs.started | date: 'dd-MM-yyyy'}}</div>
+									</td>
+								</tr>
+							</ng-container>
+						</ng-container>
+					</ng-container>
+				</tbody>
+			</table>
+		</div>
+		<div class="userRcLogCustomTable-tableView"
+			*ngIf="filterName == 'createdDate' && totalDataArr && totalDataArr.length>0">
+			<table datatable class="userLogsRtsTable customizeRtsScrollBar table table-striped lh-23 rsTable"
+				[mfData]="totalDataArr" #mf="mfDataTable" [mfRowsOnPage]="numberOfPage">
+				<thead>
+					<tr>
+						<th>S.No.</th>
+						<th>Resource Name</th>
+						<th class="tableHeader" *ngFor="let date of calenderArray">{{date}}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<ng-container *ngFor="let issue of totalDataArr; let i = index;">
+						<tr>
+							<td>
+								<div>{{totalDataArr.indexOf(issue) + 1}}</div>
+							</td>
+							<td>
+								<div>{{issue.userName}}</div>
+							</td>
+							<td *ngFor="let date of issue.hoursArray">
+								<div>{{date.numberOfHours}}</div>
+							</td>
+						</tr>
+					</ng-container>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</main>
+<div class="loader" *ngIf="loading">
+	<div class="loaderContainer">
+		<img src="assets/preloader.gif" />
+		<span>{{status}}%</span>
+	</div>
+</div>

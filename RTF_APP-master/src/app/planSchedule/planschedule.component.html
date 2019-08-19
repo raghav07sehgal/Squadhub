@@ -1,0 +1,711 @@
+﻿<nav class="navbar navbar navbar-expand-md navbar-dark fixed-top">
+  <div class="container-fluid mainScheduleContainer">
+    <div class="navbar-brand" [routerLink]="['/dashboard']" title="SquadHub" style="margin-left: 51px;">
+      <span>Squa</span>
+      <span class="mg-right-15 color_6">d</span>
+      <span class="color_6">H</span>ub
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-right: 63px;">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <div class="headerIcons icon_1" title="Dashboard" [routerLink]="['/dashboard']">
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="headerIcons icon_2 disabled" title="Booking">
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown viewReportDropDown">
+            <div class="customVerticalAlignment headerIcons icon_3" title="View Report" id="dropdownMenuButton" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div class="dropdown-menu dropdownMenuButton" aria-labelledby="dropdownMenuButton" style="left: -39px !important;">
+              <a class="dropdown-item" (click)="gotoNextPage($event, '/userLogged')">User Logged Data</a>
+              <a class="dropdown-item" (click)="gotoNextPage($event, '/workload')">Work Load</a>
+              <a class="dropdown-item" (click)="gotoNextPage($event, '/consolidated')">Consolidated Data</a>
+              <a class="dropdown-item" (click)="gotoNextPage($event, '/accountReport')">Account View</a>
+              <a class="dropdown-item" (click)="gotoNextPage($event, '/resourceUtilization')">Resource Utilization</a>
+              <a class="dropdown-item" (click)="gotoNextPage($event, '/resourceBookingReport')">Resource View</a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="headerIcons icon_4" title="Add User" [routerLink]="['/addUser']">
+          </div>
+        </li>
+        <li class="nav-item">
+          <a _ngcontent-c2="" class="ff1" title="User Profile" id="dropdownMenuProfileButton" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <img [src]="loginImageURL" class="profileIcon" />
+            <span class="caret"></span>
+          </a>
+          <div class="dropdown-menu" id="dropDownPro" aria-labelledby="dropdownMenuProfileButton">
+            <a class="dropdown-item cursorLink">Signed in as
+              <br />
+              <span>{{loginUserName}}</span>
+            </a>
+            <hr />
+            <a class="dropdown-item" (click)="logout()">Sign out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<main class="plainScheduleContainerView">
+  <div class="container mainScheduleContainer">
+    <div class="container-fluid planSheduleView">
+      <div class="row planShedulemainContainer">
+        <div class="col-md-9 planSheduleViewLeft">
+          <div class="col-md-12 userSkills flexCss">
+            <div class="col-md-2 toggleSwitchContainer">
+              <select class="form-control skill_css_1" placeholder="Skill set" [disabled]="availableResource.length==0" [(ngModel)]="selectedSkill"
+                (change)="skillSelect(true, true)">
+                <option *ngFor="let skill of fetchSkills" [value]="skill.skill_name">{{skill.skill_name}}</option>
+              </select>
+            </div>
+            <div class="col-md-3 searchContainer">
+              <input type="text" placeholder="Search" [(ngModel)]="term" [disabled]="availableResource.length==0">
+              <div class="searchIconDiv">
+                <div class="searchBoxContainer">
+                  <img src="assets/searchIcon.png" />
+                </div>
+              </div>
+            </div>
+
+            <div class="selectedUser col-md-2">
+              <div class="userDataContent userSelectedDiv" *ngIf="checkedUsersArray.length >0">
+                <div>Selected User's:
+                  <span class="customFont">{{checkedUsersArray.length}}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="selectedUser col-md-3">
+              <div class="userDataContent userSelectedDiv" *ngIf="checkedUsersArray.length >0">
+                <div>Selected Hour's:
+                  <span class="customFont">{{assignHours * checkedUsersArray.length}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="selectedUser col-md-2">
+              <div class="userDataContent userSelectedDiv">
+                <div>Total Hours:
+                  <span class="customFont">{{totalHours}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 usersData flexCss">
+            <div class="col-md-2 usersDataContentHolder">
+              <div class="userContentData">
+                <div class="userDataContent">
+                  <span>{{totalAvilUser}}</span>/
+                  <span class="customfont-15">{{totalUser}}</span>
+                </div>
+                <div class="userBottomText">AVAILABLE</div>
+              </div>
+            </div>
+            <div class="col-md-10 userDisplayCollectionsData" *ngIf="availableResource.length >0">
+              <div class="arrowRight">
+                <img src="assets/arrowLeft.png" class="img-fluid" (click)="moveLeft('available')" />
+              </div>
+              <div class="middleDiv">
+                <drag-scroll #nav>
+                  <ng-container *ngFor="let userData of availableResource | SearchFilter: term; let i= index;">
+                    <div *ngIf="userData" ngClass="userDisplayData {{userData.inactive}}" drag-scroll-item>
+                      <div class="usersnumber">
+                        <span>{{i+1}}</span>
+                      </div>
+                      <div class="displayUserProfile" (click)="setAndUnsetChecked($event, userData)">
+                        <div *ngIf="!userData.inactive" class="checkBoxContainer hoverClass">
+                          <input type="checkbox" id="availableCheck{{i}}">
+                          <label for="availableCheck{{i}}">
+                            <span></span>
+                          </label>
+                        </div>
+
+                        <img [src]="displayPicture" class="img-fluid" />
+                        <div class="userDisplaySkills">
+                          <div *ngIf="userData.skill_code == 'ST' && userData.skill_name == selectedSkill">
+                            <div [ngClass]="{'color_1': userData.level==='1_Expert','color_2': userData.level==='3_Beginner', 'color_3': userData.level==='2_Intermediate'}"
+                              *ngIf="userData.skill_code == 'ST'">{{userData.skill_code}}</div>
+                          </div>
+                          <div class="mg-top-30" *ngIf="userData.skill_code == 'LT' && userData.skill_name == selectedSkill">
+                            <div [ngClass]="{'color_1': userData.level==='1_Expert','color_2': userData.level==='3_Beginner', 'color_3': userData.level==='2_Intermediate'}"
+                              *ngIf="userData.skill_code == 'LT'">{{userData.skill_code}}</div>
+                          </div>
+                          <div class="mg-top-70" *ngIf="userData.skill_code == 'HT' && userData.skill_name == selectedSkill">
+                            <div [ngClass]="{'color_1': userData.level==='1_Expert','color_2': userData.level==='3_Beginner', 'color_3': userData.level==='2_Intermediate'}"
+                              *ngIf="userData.skill_code == 'HT'">{{userData.skill_code}}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="displayUserHours">
+                        <span>{{userData.username}}</span>
+                      </div>
+                    </div>
+                  </ng-container>
+                </drag-scroll>
+              </div>
+              <div class="arrowRight">
+                <img src="assets/arrowRight.png" class="img-fluid" (click)="moveRight('available')" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 usersData flexCss">
+            <div class="col-md-2  usersDataContentHolder">
+              <div class="userContentData">
+                <div class="userDataContent">
+                  <span>{{totalPartAvilUser}}</span>/
+                  <span class="customfont-15">{{totalUser}}</span>
+                </div>
+                <div class="userBottomText">PARTIAL AVAILABLE</div>
+              </div>
+            </div>
+            <div class="col-md-10 userDisplayCollectionsData" *ngIf="partialResource.length >0">
+              <div class="arrowRight">
+                <img src="assets/arrowLeft.png" class="img-fluid" (click)="moveLeft('partial_available')" />
+              </div>
+              <div class="middleDiv">
+                <drag-scroll #nav1>
+                  <ng-container *ngFor="let partialData of partialResource  | SearchFilter: term; let i = index;">
+                    <div *ngIf="partialData" class="userDisplayData {{partialData.inactive}}" drag-scroll-item>
+                      <div class="usersnumber">
+                        <span>{{i+1}}</span>
+                      </div>
+                      <div class="displayUserProfile" (click)="setAndUnsetChecked($event, partialData)">
+                        <div *ngIf="!partialData.inactive" class="checkBoxContainer hoverClass">
+                          <input type="checkbox" id="check{{i}}">
+                          <label for="check{{i}}">
+                            <span></span>
+                          </label>
+                        </div>
+                        <img [src]="displayPicture" class="img-fluid" />
+                        <div class="userDisplaySkills">
+                          <div *ngIf="partialData.skill_code == 'ST' && partialData.skill_name == selectedSkill">
+                            <div [ngClass]="{'color_1': partialData.level==='1_Expert','color_2': partialData.level==='3_Beginner', 'color_3': partialData.level==='2_Intermediate'}"
+                              *ngIf="partialData.skill_code == 'ST'">{{partialData.skill_code}}</div>
+                          </div>
+                          <div class="mg-top-30" *ngIf="partialData.skill_code == 'LT' && partialData.skill_name == selectedSkill">
+                            <div [ngClass]="{'color_1': partialData.level==='1_Expert','color_2': partialData.level==='3_Beginner', 'color_3': partialData.level==='2_Intermediate'}"
+                              *ngIf="partialData.skill_code == 'LT'">{{partialData.skill_code}}</div>
+                          </div>
+                          <div class="mg-top-70" *ngIf="partialData.skill_code == 'HT' && partialData.skill_name == selectedSkill">
+                            <div [ngClass]="{'color_1': partialData.level==='1_Expert','color_2': partialData.level==='3_Beginner', 'color_3': partialData.level==='2_Intermediate'}"
+                              *ngIf="partialData.skill_code == 'HT'">{{partialData.skill_code}}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="displayUserHours">
+                        <div class="text">
+                          <span>{{partialData.username}}</span>
+                        </div>
+                      </div>
+                      <div *ngIf="partialData.user_list" _ngcontent-c1="" class="userinfo">
+                        <img src="assets/more.png" (click)="moreInfo(partialData)" data-target="#userDisplayDataPopUpConatiner" data-toggle="modal"
+                        />
+                      </div>
+                    </div>
+                  </ng-container>
+                </drag-scroll>
+              </div>
+              <div class="arrowRight">
+                <img src="assets/arrowRight.png" class="img-fluid" (click)="moveRight('partial_available')" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 usersData flexCss">
+            <div class="col-md-2  usersDataContentHolder">
+              <div class="userContentData">
+                <div class="userDataContent">
+                  <span>{{totalNotAvilUser}}</span>/
+                  <span class="customfont-15">{{totalUser}}</span>
+                </div>
+                <div class="userBottomText">NOT AVAILABLE</div>
+              </div>
+            </div>
+            <div class="col-md-10 userDisplayCollectionsData" *ngIf="notAvailableResourcedata.length >0">
+              <div class="arrowRight">
+                <img src="assets/arrowLeft.png" class="img-fluid" (click)="moveLeft('not_available')" />
+              </div>
+              <div class="middleDiv">
+                <drag-scroll #nav2>
+                  <ng-container *ngFor="let notAvailableData of notAvailableResourcedata  | SearchFilter: term; let i = index;">
+                    <div *ngIf="notAvailableData" class="userDisplayData {{notAvailableData.inactive}}" drag-scroll-item>
+                      <div class="usersnumber">
+                        <span>{{i+1}}</span>
+                      </div>
+                      <div class="displayUserProfile">
+                        <div class="checkBoxContainer hoverClass">
+                          <label for="c3">
+                            <span></span>
+                          </label>
+                        </div>
+                        <img [src]="displayPicture" class="img-fluid" />
+                        <div class="userDisplaySkills">
+                          <div *ngIf="notAvailableData.skill_code == 'ST' && notAvailableData.skill_name == selectedSkill">
+                            <div [ngClass]="{'color_1': notAvailableData.level==='1_Expert','color_2': notAvailableData.level==='3_Beginner', 'color_3': notAvailableData.level==='2_Intermediate'}"
+                              *ngIf="notAvailableData.skill_code == 'ST'">{{notAvailableData.skill_code}}</div>
+                          </div>
+                          <div class="mg-top-30" *ngIf="notAvailableData.skill_code == 'LT' && notAvailableData.skill_name == selectedSkill">
+                            <div [ngClass]="{'color_1': notAvailableData.level==='1_Expert','color_2': notAvailableData.level==='3_Beginner', 'color_3': notAvailableData.level==='2_Intermediate'}"
+                              *ngIf="notAvailableData.skill_code == 'LT'">{{notAvailableData.skill_code}}</div>
+                          </div>
+                          <div class="mg-top-70" *ngIf="notAvailableData.skill_code == 'HT' && notAvailableData.skill_name == selectedSkill">
+                            <div [ngClass]="{'color_1': notAvailableData.level==='1_Expert','color_2': notAvailableData.level==='3_Beginner', 'color_3': notAvailableData.level==='2_Intermediate'}"
+                              *ngIf="notAvailableData.skill_code == 'HT'">{{notAvailableData.skill_code}}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="displayUserHours">
+                        <span class="text">{{notAvailableData.username}}</span>
+                        <br />
+                      </div>
+                      <div *ngIf="notAvailableData.user_list" _ngcontent-c1="" class="userinfo">
+                        <img src="assets/more.png" (click)="moreInfo(notAvailableData)" data-target="#userDisplayDataPopUpConatiner" data-toggle="modal"
+                        />
+                      </div>
+                    </div>
+                  </ng-container>
+                </drag-scroll>
+              </div>
+              <div class="arrowRight">
+                <img src="assets/arrowRight.png" class="img-fluid" (click)="moveRight('not_available')" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 planSheduleViewRight pad-0">
+          <div class="col-md-12 planSheduleViewTopBand searchTicketContainer borderClass">
+            <input class="searchText" type="text" placeholder="Search CSD" (change)="searchTicket($event)" (keyup.enter)="searchTicket($event)"
+              [(ngModel)]="searchCSDNo">
+            <div class="searchIconDiv">
+              <div class="searchBoxContainer" (click)="searchTicket($event)">
+                <img src="assets/searchIcon.png" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 planSheduleViewTopBand borderClass">
+            <select class="form-control input-sm" [(ngModel)]="selectedStatus" (change)="getJIRATicketStatusList(false)">
+              <option>Select Status</option>
+              <option *ngFor="let status of statusList" [ngValue]="status">{{status}}</option>
+            </select>
+          </div>
+          <div class="col-md-12 planSheduleViewTopBand">
+            <select class="form-control input-sm" [(ngModel)]="selectedAssignee" (change)="assigneeSelection()">
+              <option [ngValue]="1">Select Assignee</option>
+              <option *ngFor="let assignee of assigneeUsers" [ngValue]="assignee.email">{{assignee.userName}}</option>
+            </select>
+          </div>
+          <div class="col-md-12 planSheduleViewTopBand">
+            <select class="form-control input-sm" [(ngModel)]="selectedCSD" (change)="ticketSelection()">
+              <option>Select CSD</option>
+              <ng-container *ngFor="let issues of assigneeUsersCSD; let i = index;">
+                <option *ngIf="i==0" [selected]="true">{{issues.key}}</option>
+                <option *ngIf="i!=0">{{issues.key}}</option>
+              </ng-container>
+            </select>
+          </div>
+
+          <div class="flexCss loggedHrsDiv">
+            <div class="col-md-12 planSheduleViewTopBand loggedHrs">
+              <div class="userStatus">
+                Status:
+                <span class="color_10">{{currentCSDStatus}}</span>
+                <div *ngIf="currentCSDStatus=='To be Planned'">
+                  <input type="checkbox" [(ngModel)]="changeCSDStatus" checked="{{changeCSDStatus}}">
+                  <span>Change CSD Status</span>
+                </div>
+                <hr>
+              </div>
+            </div>
+          </div>
+          <div class="flexCss loggedHrsDiv">
+            <div class="col-md-12 planSheduleViewTopBand loggedHrs">
+              <div class="userStatusText">
+                Studio:
+                <span class="color_10">{{studioName}}</span> | Client:
+                <span class="color_10">{{clientName}}</span>
+                <hr>
+              </div>
+            </div>
+            <div class="col-md-12 planSheduleViewTopBand loggedHrs">
+              <div class="userStatusText">
+                Budgeted
+                <span>{{budgetedEfforts}} HRS</span>
+                | Planned
+                <span>{{totalPlannedBudgetedEffort}} HRS</span>
+                <hr>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 planSheduleViewTopBand customHeight">
+            <div class="text">
+              Overall To be Planned
+              <div>{{totalBudgetedEffort}} Hrs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid bg-colorWhite">
+      <div class="row">
+        <div class="col-md-1 calenderAddressView">
+          <div class="col-md-12 col-xs-6 calenderTopView mg-25 text-center" (click)="showHideDiv(true)">
+            <div class="calenderIcon icon_5">
+            </div>
+            <div class="bottomText">
+              Calendar
+            </div>
+          </div>
+          <div class="col-md-12 col-xs-6 calenderTopView text-center" (click)="showHideDiv(false)">
+            <div class="calenderIcon icon_6">
+            </div>
+            <div class="bottomText">
+              Booked Resource
+            </div>
+          </div>
+        </div>
+        <div class="col-md-11 calenderAddressDivView pad-0">
+          <div *ngIf="showDiv" class="col-md-12 calenderPopUpViewContainer pad-0 tooltipCss">
+            <div class="container customizeRtsScrollBar overflow-scroll">
+              <div class="col-md-12 customPadding-10">
+                <div class="col-md-12">
+                  <div class="row rowClass">
+                    <div>
+                      <div class="calenderStartEndData">
+                        <span>CSD Requested Start Date:</span>
+                        <input type="text" [(ngModel)]="requestedStartDate" placeholder="YYYY-MM-DD">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="calenderStartEndData">
+                        <span>CSD Requested End Date:</span>
+                        <input type="text" [(ngModel)]="requestedEndDate" placeholder="YYYY-MM-DD">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="container customPadding-10">
+                <div class="col-md-12 mobileViewStartEndDateDiv">
+                  <div class="row">
+                    <div>
+                      <div class="calenderStartEndData">
+                        <span>Start Date:</span>
+                        <input type="text" [(ngModel)]="userSelectedFromDate" placeholder="YYYY-MM-DD">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="calenderStartEndData">
+                        <span>End Date:</span>
+                        <input type="text" [(ngModel)]="userSelectedEndDate" placeholder="YYYY-MM-DD">
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <select class="form-control hoursDropDownClass" [(ngModel)]="assignHour" (change)="setHours($event)">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2">
+                      <button type="button" class="buttonContainer " data-toggle="modal" data-target="#confirmModalBox" (click)="calculateBookedUserData()">Book</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 flexCss">
+                <ngb-datepicker #dp (select)="onDateSelection($event)" [(ngModel)]="model" [markDisabled]="isDisabled" [firstDayOfWeek]="0"
+                  [displayMonths]="3" [dayTemplate]="t" [navigation]="navigation"></ngb-datepicker>
+                <ng-template #t let-date="date" let-focused="focused" let-disabled="disabled" let-selected="selected">
+                  <span class="custom-day" [class.focused]="focused" [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
+                    [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null"
+                    [class.text-muted]="disabled" [class.bg-primary]="selected" [class.hidden]="date.month !== currentMonth">
+                    {{ date.day }}
+                  </span>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!showDiv && bookedResourceData.length >0" class="col-md-12 addressPopUpViewContainer pad-0 tooltipCss">
+            <div class="customizeRtsScrollBar overflow-scroll switchContainer">
+              <div class="col-md-12 customPadding-10 flexCss">
+                <div class="col-md-5">
+                </div>
+                <div class="col-md-2">
+                  <button type="button" class="buttonContainer" (click)="gotoNextPage($event, '/reduceBookingHours')">Edit Booking
+                  </button>
+                </div>
+                <div class="col-md-2">
+                  <button type="button" class="buttonContainer" (click)="excelReport()">Export Excel
+                  </button>
+                </div>
+
+                <div class="col-md-3">
+                  <button type="button" class="buttonContainer" data-toggle="modal" data-target="#manageUsers" (click)="changeAction()">Manage Booking
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-12 flexCss borderView">
+                <div class="col-md-12 headerView flexCss text-center">
+                  <div class="col">
+                    <span>User</span>
+                  </div>
+                  <div class="col-2">
+                    <span>Name</span>
+                  </div>
+                  <div class="col-2">
+                    <span>Project</span>
+                  </div>
+                  <div class="col-2">
+                    <span>Clinet Name</span>
+                  </div>
+                  <div class="col">
+                    <span>Assigned Hrs</span>
+                  </div>
+                  <div class="col">
+                    <span>Booking Date</span>
+                  </div>
+                  <div class="col">
+                    <span>Availability</span>
+                  </div>
+                  <div class="col">
+                    <span>Planned</span>
+                  </div>
+                </div>
+                <div class="col-md-12 customPadding_10 flexCss text-center" *ngFor="let fetchBookedData of bookedResourceData; let i = index;">
+                  <div class="col bookResourcesCheckBoxContainer">
+                    <img class="profileIcon" [src]="fetchBookedData.avatarUrls" />
+                  </div>
+                  <div class="col-2 bookResourceHrs">
+                    <span>{{fetchBookedData.fullname}}</span>
+                  </div>
+                  <div class="col-2 bookResourceHrs">
+                    <span>{{fetchBookedData.csdno}}</span>
+                  </div>
+                  <div class="col-2 bookResourceHrs">
+                    <span>{{fetchBookedData.clientName}}</span>
+                  </div>
+                  <div class="col bookResourceHrs">
+                    <span>{{fetchBookedData.assignhours}}</span>
+                  </div>
+                  <div class="col bookResourceHrs">
+                    <span>{{fetchBookedData.bookingdate | date: 'dd-MMM-yyyy' }}</span>
+                  </div>
+                  <div class="col bookResourceHrs">
+                    <span>{{fetchBookedData.status}}</span>
+                  </div>
+                  <div class="col bookResourceHrs plannedView">
+                    <span>{{fetchBookedData.percentage}}%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!showDiv && bookedResourceData.length==0" class="col-md-12 addressPopUpViewContainer pad-0 tooltipCss text-center">
+            <div _ngcontent-c1="" class="customizeRtsScrollBar overflow-scroll ">
+              <div class="recordsAvailable container col-md-4">
+                <div class="recordsAvailable-content row justify-content-md-center">
+                  <div class="recordsAvailable-body col-md-auto">
+                    <img src="assets/errorImage.png" class="img-fluid" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- Modal -->
+<div *ngIf="showHideModel" class="modal fade popUpContainer" id="confirmModalBox" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+        <button type="button" class="close" id="close_model" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <p>Your planned
+          <br>
+          <span>Booking HRS ({{this.checkedUsersArray.length}} TM X {{totalDays}} Days) are</span>
+          <br>
+          <span class="customCss">{{this.checkedUsersArray.length * assignHours * totalDays}} HRS</span>
+          <br>
+          <span>Remaining </span>
+          <br>
+          <span>{{(totalRemainBudgetedEffort -(this.checkedUsersArray.length * assignHours * totalDays))-totalPlannedBudgetedEffort
+            }} Hrs </span>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" class="btn btn-primary" (click)="bookedUser()">Do you want to Book?</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade userDetailsPopUpContainer" id="userDisplayDataPopUpConatiner" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered custom-width" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Booking Details</h5>
+        <button #closeModel type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="totalDeletedHours=0">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="totalHoursClass">
+        <span>Total assigned hours :{{totalAssignHours}}</span>
+      </div>
+      <div class="deletebuttonClass">
+        <button type="button" class="buttonContainer" data-toggle="modal" data-target="#confirmDeleteModalBox" (click)="showHideDeleteModel = true"
+          [disabled]="checkedDeleteUsersArray.length==0">Delete</button>
+      </div>
+      <div class="modal-body text-center scrollMoreClass">
+        <table #bookingDetailsTable class="table table-fixed">
+          <thead>
+            <tr>
+              <th>S.No.</th>
+              <th>
+                <input type="button" value="Select All" (click)="isSelected = !isSelected; setAndUnsetCheckedUserDelete($event, null, moreInfoArr);">
+              </th>
+              <th>Name</th>
+              <th>CSD</th>
+              <th>Client Name</th>
+              <th>Assigned Hrs</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let userObj of moreInfoArr; let i = index;">
+              <td>{{i+1}}</td>
+              <td>
+                <input type="checkbox" [checked]="isSelected" (change)="setAndUnsetCheckedUserDelete($event, userObj.user, null)" />
+              </td>
+              <td>{{userObj.user.fullname}}</td>
+              <td>{{userObj.user.csdno}}</td>
+              <td>{{userObj.user.clientName}}</td>
+              <td>{{userObj.user.assignhours}}</td>
+              <td>{{userObj.bookingdate | date: 'dd-MMM-yyyy' }}</td>
+              <td>
+                <button class="btn form-group hvr-bounce-to-top" title="Delete" type="button" (click)="deleteCheckedUser(userObj, $event)">
+                  <img src="assets/delete.svg" height="15" />
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showHidePopup" class="modal fade" id="manageUsers" tabindex="-1" role="dialog" aria-labelledby="manageUsers"
+  aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Manage Booking</h4>
+        <button #closeManageBookingModel type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="totalDeletedHours=0">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="deletebuttonClass" *ngIf="bookedResourceData.length >0">
+        <button type="button" class="buttonContainer" data-toggle="modal" data-target="#confirmDeleteModalBox" (click)="showHideDeleteModel = true"
+          [disabled]="checkedDeleteUsersArray.length==0">Delete</button>
+      </div>
+      <div class="modal-body pleaseWaitCSS" *ngIf="bookedResourceData.length==0">
+        Please Wait...
+      </div>
+      <div class="modal-body scrollClass" *ngIf="bookedResourceData.length >0">
+        <table #manageBookingTable datatable class="table table-fixed">
+          <thead>
+            <tr>
+              <th>S.No.</th>
+              <th class="text-center">
+                <input type="button" value="Select All" (click)="isMBSelected = !isMBSelected; setAndUnsetCheckedUserDelete($event, null, bookedResourceData);">
+              </th>
+              <th>User Name</th>
+              <th>Project Key</th>
+              <th>Client Name</th>
+              <th>Booking Date</th>
+              <th>Assigned Hours</th>
+              <th>Availability</th>
+              <th>Planned</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody class="text-center">
+            <tr *ngFor="let fetchBookedData of bookedResourceData; let i = index;">
+              <td>{{i+1}}</td>
+              <td>
+                <input type="checkbox" [checked]="isMBSelected" (change)="setAndUnsetCheckedUserDelete($event, fetchBookedData, null)" />
+              </td>
+              <td>{{fetchBookedData.fullname}}</td>
+              <td>{{fetchBookedData.csdno}}</td>
+              <td>{{fetchBookedData.clientName}}</td>
+              <td>{{fetchBookedData.bookingdate | date: 'dd-MMM-yyyy' }}</td>
+              <td>{{fetchBookedData.assignhours}}</td>
+              <td>{{fetchBookedData.status}}</td>
+              <td>{{fetchBookedData.percentage}}%</td>
+              <td>
+                <button class="btn form-group hvr-bounce-to-top" title="Delete" type="button" data-toggle="modal" data-target="#confirmDeleteModalBox"
+                  (click)="showHideDeleteModel = true; setUserForDelete(fetchBookedData)">
+                  <img src="assets/delete.svg" height="15" />
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Booked Resource Modal Box-->
+<div *ngIf="showHideDeleteModel" class="modal fade popUpContainer" id="confirmDeleteModalBox" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+        <button type="button" class="close" id="close_model" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <p>Do you want to cancel selected</p>
+        <p>bookings ({{totalDeletedHours}} HRS)!!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" class="btn btn-primary" (click)="deleteAllCheckedUser($event)">Yes</button>
+        <button type="button" class="close" data-dismiss="modal" class="btn btn-primary">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End-->
+<div class="loader" *ngIf="loading">
+  <div class="loaderContainer">
+    <img src="assets/preloader.gif" />
+    <span>Wait..</span>
+  </div>
+</div>

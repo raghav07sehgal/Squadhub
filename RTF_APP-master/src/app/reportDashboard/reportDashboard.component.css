@@ -1,0 +1,205 @@
+.reportDashboardContainer{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: url('../../assets/backgroundImage.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    overflow-y: auto;
+    
+}
+.reportDashboardMainholder{
+    width: 100%;
+    height: auto;
+    /* padding-top: 80px;
+    padding-bottom: 50px; */
+    padding: 180px 0px; 
+}
+
+.reportDashboard-item .icon{
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    text-align: center;
+    line-height: 135px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    background-color: #00aeef;
+    position: relative;
+    cursor: pointer;
+    transition: all 1s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    top: 20px;
+}
+.reportDashboard-item {
+    background: rgba(49, 47, 47, 0.52);
+    margin: 15px 15px 0px;
+    height: 100%;
+    max-height: 192px;
+    padding: 10px 15px;
+}
+.reportDashboard-item .icon img{
+    width: 70px;
+    height: auto;
+    margin-top: -56px;
+}
+.reportDashboard-item .icon::before {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 0;
+	height: 0;
+	background: rgba(255,255,255,.2);
+	border-radius: 100%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	opacity: 0;
+}
+.reportDashboard-item:hover .icon::before {
+	-webkit-animation: circle .75s;
+	animation: circle .75s;
+}
+@-webkit-keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 150%;
+		height: 150%;
+		opacity: 0;
+	}
+}
+@keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 150%;
+		height: 150%;
+		opacity: 0;
+	}
+}
+.reportDashboard-item button{
+    width: 100%;
+    max-width: 280px;
+    color: #fff;
+    background: transparent;
+    letter-spacing: 1px;
+    font-family: Bradley Hand ITC;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px;
+    border: 0;
+    border-radius: 6px;
+    margin: 0 auto;
+    margin-top: 26px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    height: 100%;
+    max-height: 46px;
+}
+/* .reportDashboard-item button:hover{
+    color: #fff;
+    background: rgba(37, 37, 37, 0.5);
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+}
+.reportDashboard-item button:hover,
+.reportDashboard-item button:focus{
+    outline: 0;
+} */
+.line-dec{
+    display: none;
+    width: 90%;
+    height: 2px;
+    background-color: rgba(247, 247, 247, 0.8);
+    margin: 0 auto;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+/* Media Queries */
+/* Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {  
+    .reportDashboardMainholder{
+        padding-top: 100px;
+    }
+  }
+  
+  /* Small devices (landscape phones, 576px and up)*/
+  @media (min-width: 576px) and (max-width: 767.98px) { 
+    .reportDashboardMainholder{
+        padding-top: 100px;
+    } 
+    .reportDashboard-item  button{
+        font-size: 14px;
+    }
+  }
+  
+  /* Medium devices (tablets, 768px and up)*/
+  @media (min-width: 768px) and (max-width: 991.98px) {  
+    .reportDashboard-item  button{
+        font-size: 14px;
+    }
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    
+  }
+
+  .reportDashboard-text {
+    background: rgba(255, 255, 255, 0.71);
+    margin: 0px 15px 15px;
+    height: 100%;
+    max-height: 64px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+.reportDashboardText{
+    margin-top: -72px;
+    font-family: "Century Gothic";
+}
+
+@media (max-width: 575.98px) {  
+    .subReportDashboardMainholder{
+        padding-top: 100px;
+    }   
+}
+  
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) { 
+.subReportDashboardMainholder{
+    padding-top: 100px;
+} 
+.reportDashboard-item  button{
+    font-size: 14px;
+}
+
+}
+.subReportDashboardMainholder{
+    width: 100%;
+    height: auto;
+    padding-top: 12px;
+    padding-bottom: 50px;
+}
+@media (min-width: 467px) and (max-width: 576px)  { 
+    .reportDashboard-text {
+        margin: 0px 15px 84px;
+    }
+}

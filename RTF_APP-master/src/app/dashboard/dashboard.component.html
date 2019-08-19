@@ -1,0 +1,63 @@
+﻿<nav class="navbar navbar navbar-expand-md navbar-dark fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-brand" [routerLink]="['/dashboard']" title="SquadHub">
+            <span>Squa</span>
+            <span class="mg-right-15 color_6">d</span>
+            <span class="color_6">H</span>ub</div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a _ngcontent-c2="" title="User Profile" class="ff1" id="dropdownMenuProfileButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <img [src]="loginImageURL" class="profileIcon" />
+                        <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" id="dropDownPro" aria-labelledby="dropdownMenuProfileButton">
+                        <a class="dropdown-item cursorLink">Signed in as
+                            <br/>
+                            <span>{{loginUserName}}</span>
+                        </a>
+                        <hr/>
+                        <a class="dropdown-item" (click)="logout()">Sign out</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="dashboardContainer customizeRtsScrollBar">
+    <div class="dashboardMainHolder">
+        <div class="container">
+            <div class="row justify-content-md-center text-center">
+                <div class="col-md-12 col-sm-12 col-xs-12 fontCustomCss-4">
+                    Welcome!
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 fontCustomCss-3">
+                    <span>{{loginUserName}}</span>,
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 inputDivContainer">
+                    <button type="button" class="input-container customInputCss_1 hvr-bounce-to-top" [routerLink]="['/planSchedule']">Plan Schedule</button>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 inputDivContainer">
+                    <button type="button" class="input-container customInputCss_1 hvr-bounce-to-top" [routerLink]="['/reportDashboard']">View Reports</button>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 inputDivContainer">
+                    <button type="button" class="input-container customInputCss_1 hvr-bounce-to-top" [routerLink]="['/addUser']">Resource Pool</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="loader" *ngIf="loading">
+    <div class="loaderContainer">
+        <img src="assets/preloader.gif" />
+        <span>Wait...</span>
+    </div>
+</div>

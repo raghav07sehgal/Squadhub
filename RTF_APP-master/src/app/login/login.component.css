@@ -1,0 +1,158 @@
+/* login css */
+
+.loginContainer{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: url("../../assets/backgroundImage.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  overflow-y: auto;
+}
+.contentHolder{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 10%;
+    padding: 10px 0;
+
+}
+.loginButton button{
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 5px solid;
+  background-color: #92d050;
+  color: #000;
+  font-size: 18px;
+  border-color: #d9d9d9;
+  font-family: Bradley Hand ITC;
+  cursor: pointer;
+  font-weight: bold;
+}
+.loginButton button:focus, .loginButton button:hover{
+  outline: 0;
+}
+.loginButton button:active{
+  background: #e5e5e5;
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+  outline: none;
+}
+.fontCustomCss-1{
+  font-size: 20px;
+  font-family: BradleyHandITC;
+  font-weight: bold;
+}
+.fontCustomCss-2{
+  font-size: 100px;
+  font-weight: bold;
+}
+.fontCustomCss-3 {
+  font-size: 23px;
+  font-family: BradleyHandITC;
+  font-weight: bold;
+}
+.fontCustomCss-2 span{
+  color: #92d050;
+}
+.input-container{
+    width: 100%;
+    max-width: 350px;
+    padding: 5px;
+    height: 100%;
+    border: 0;
+    background: rgba(255,255,255,0.5);
+    border-radius: 6px;
+    text-align: center;
+    font-size: 18px;
+    font-family: BradleyHandITC;
+    font-weight: bold;
+    max-height: 54px;
+    min-height: 54px;
+}
+.input-container::selection{
+  background: rgba(130, 130, 130, 0.6);
+}
+.input-container:focus, .input-container:hover{
+  outline: 0;
+}
+.inputDivContainer{
+  margin-bottom: 15px;
+}
+.input-container::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+}
+.input-container::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+}
+.input-container:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+}
+.input-container:-moz-placeholder { /* Firefox 18- */
+  color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+}
+.marginRight-16{
+  margin-right: -16px;
+  font-size: 98px;
+}
+.loginContainer form{
+  width:100%;
+  margin-top: 25px;
+}
+.fontFamily{
+  font-family: Century Gothic;
+}
+.navbar {
+  padding: 0.3em 1em;
+  background-color: rgb(64,64,64);
+  border-bottom: 1px solid rgba(105, 106, 109, 0.3);
+  height: 40px !important;
+}
+.mg-top-25{
+  margin-top: 20px;
+}
+/* Media Queries */
+/* Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {  
+  .loginContainer .fontCustomCss-2 {
+      font-size: 34px;
+  }
+  .loginContainer .marginRight-16{
+    margin-right: -10px;
+    font-size: 34px;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) { 
+  .loginContainer .fontCustomCss-2 {
+    font-size: 34px;
+  }
+  .loginContainer .marginRight-16{
+    margin-right: -10px;
+    font-size: 34px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {  
+  .loginContainer .fontCustomCss-2 {
+    font-size: 70px;
+  }
+  .loginContainer .marginRight-16{
+    margin-right: -20px;
+    font-size: 70px;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  
+}

@@ -1,0 +1,297 @@
+<nav class="navbar navbar navbar-expand-md navbar-dark fixed-top">
+  <div class="container-fluid mainScheduleContainer">
+    <div class="navbar-brand" [routerLink]="['/dashboard']">
+      <div title="SquadHub">
+        <span>Squa</span>
+        <span class="mg-right-15 color_6">d</span>
+        <span class="color_6">H</span>ub</div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <div class="headerIcons icon_1" title="Dashboard" [routerLink]="['/dashboard']">
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="headerIcons icon_2" title="Booking" (click)="gotoNextPage($event, '/planSchedule')">
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown viewReportDropDown">
+            <div class="customVerticalAlignment headerIcons icon_3" title="View Report" id="dropdownMenuButton" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div class="dropdown-menu dropdownMenuButton" aria-labelledby="dropdownMenuButton" style="left: -39px !important;">
+              <a class="dropdown-item" (click)="gotoNextPage($event, '/userLogged')">User Logged Data</a>
+              <a class="dropdown-item" (click)="gotoNextPage($event, '/workload')">Work Load</a>
+              <a class="dropdown-item" (click)="gotoNextPage($event, '/consolidated')">Consolidated Data</a>
+              <a class="dropdown-item" (click)="gotoNextPage($event, '/accountReport')">Account View</a>
+              <a class="dropdown-item" (click)="gotoNextPage($event, '/resourceUtilization')">Resource Utilization</a>
+              <a class="dropdown-item" (click)="gotoNextPage($event, '/resourceBookingReport')">Resource View</a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="headerIcons icon_4 disabled" title="Add User">
+          </div>
+        </li>
+        <li class="nav-item">
+          <a _ngcontent-c2="" title="User Profile" class="ff1" id="dropdownMenuProfileButton" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <img [src]="loginImageURL" class="profileIcon" />
+            <!-- <img src="assets/arrow.png" class="customVerticalAlignment" /> -->
+            <span class="caret"></span>
+          </a>
+          <div class="dropdown-menu" id="dropDownPro" aria-labelledby="dropdownMenuProfileButton">
+            <a class="dropdown-item cursorLink">Signed in as
+              <br/>
+              <span>{{loginUserName}}</span>
+            </a>
+            <hr/>
+            <a class="dropdown-item" (click)="logout()">Sign out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--Add User Modal Box-->
+<div *ngIf="showHideModel" class="modal fade" id="adduserPopContainer" tabindex="-1" role="dialog" aria-labelledby="adduserPopContainer"
+  aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered" role="document">
+    <form [formGroup]="addUserForm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">User Detail Form</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="employeeCode" class="col-sm-3 col-form-label control-label">Employee Code</label>
+            <div class="col-sm-9">
+              <input type="number" [ngClass]="{ 'is-invalid': submitted && f.employeeCode.errors }" placeholder="Enter Employee Code" class="form-control"
+                formControlName="employeeCode" [(ngModel)]="employeeCode">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="resourceName" class="col-sm-3 col-form-label control-label">Resource Name</label>
+            <div class="col-sm-9">
+              <input type="text" [ngClass]="{ 'is-invalid': submitted && f.resourceName.errors }" placeholder="Enter Resource Name" class="form-control"
+                [(ngModel)]="resourceName" formControlName="resourceName">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="resourceEmail" class="col-sm-3 col-form-label control-label">Resource Email</label>
+            <div class="col-sm-9">
+              <input type="text" [ngClass]="{ 'is-invalid': submitted && f.resourceEmail.errors }" placeholder="Enter Resource Email" class="form-control"
+                [(ngModel)]="resourceEmail" formControlName="resourceEmail">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="typesResource" class="col-sm-3 col-form-label control-label">Type of Resource</label>
+            <div class="col-sm-9">
+              <select class="form-control form-control-lg" [(ngModel)]="typesResource" [ngClass]="{ 'is-invalid': submitted && f.typesResource.errors }"
+                placeholder="Enter Type of Resource" formControlName="typesResource">
+                <option value="Contractor">Contractor</option>
+                <option value="Regular">Regular</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="joinDate" class="col-sm-3 col-form-label control-label">Date Of Joining</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <input autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.joinDate.errors }" placeholder="yyyy-mm-dd" ngbDatepicker
+                  #d1="ngbDatepicker" [(ngModel)]="joinDate" formControlName="joinDate" class="form-control">
+                <div class="input-group-append">
+                  <button class="btn hvr-bounce-to-top" (click)="d1.toggle();" type="button">
+                    <img src="assets/calendar-icon.svg" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="level" class="col-sm-3 col-form-label control-label">Skill Levels</label>
+            <div class="col-sm-9">
+              <div class="row">
+                <div class="col-sm-3" style="margin-bottom: 2px;">
+                  <label class="form-control" style="width: 80px;">StoryLine</label>
+                </div>
+                <div class="col-sm-9">
+                  <select class="form-control form-control-lg" [(ngModel)]="selectedStoryLine" [ngClass]="{ 'is-invalid': submitted && f.selectedStoryLine.errors }"
+                    placeholder="select skill level" formControlName="selectedStoryLine">
+                    <option value="3_Beginner">Beginner</option>
+                    <option value="2_Intermediate">Intermediate</option>
+                    <option value="1_Expert">Expert</option>
+                  </select>
+                </div>
+
+                <div class="col-sm-3" style="margin-bottom: 2px;">
+                  <label class="form-control" style="width: 80px;">Lectora</label>
+                </div>
+                <div class="col-sm-9">
+                  <select class="form-control form-control-lg" [(ngModel)]="selectedLectora" [ngClass]="{ 'is-invalid': submitted && f.selectedLectora.errors }"
+                    placeholder="select skill level" formControlName="selectedLectora">
+                    <option value="3_Beginner">Beginner</option>
+                    <option value="2_Intermediate">Intermediate</option>
+                    <option value="1_Expert">Expert</option>
+                  </select>
+                </div>
+                <div class="col-sm-3" style="margin-bottom: 2px;">
+                  <label class="form-control" style="width: 80px;">HTML</label>
+                </div>
+                <div class="col-sm-9">
+                  <select class="form-control form-control-lg" [(ngModel)]="selectedHTML" [ngClass]="{ 'is-invalid': submitted && f.selectedHTML.errors }"
+                    placeholder="select skill level" formControlName="selectedHTML">
+                    <option value="3_Beginner">Beginner</option>
+                    <option value="2_Intermediate">Intermediate</option>
+                    <option value="1_Expert">Expert</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="contactDetail" class="col-sm-3 col-form-label control-label">Contact Detail</label>
+            <div class="col-sm-9">
+              <textarea [(ngModel)]="contactDetail" [ngClass]="{ 'is-invalid': submitted && f.contactDetail.errors }" placeholder="Enter Contact Detail"
+                formControlName="contactDetail" class="form-control" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="leaveDate" class="col-sm-3 col-form-label">Date Of Leaving</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <input class="form-control" type="text" [(ngModel)]="leaveDate" autocomplete="off" placeholder="yyyy-mm-dd" ngbDatepicker
+                  #d2="ngbDatepicker" formControlName="leaveDate">
+                <div class="input-group-append">
+                  <button class="btn hvr-bounce-to-top" (click)="d2.toggle();" type="button">
+                    <img src="assets/calendar-icon.svg" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="team" class="col-sm-3 col-form-label control-label">Team:</label>
+            <div class="col-sm-9">
+              <select class="form-control form-control-lg" [(ngModel)]="selectedTeam" [ngClass]="{ 'is-invalid': submitted && f.selectedTeam.errors }"
+                placeholder="select Team" formControlName="selectedTeam">
+                <option value="Engineering">Engineering</option>
+                <option value="Production">Production</option>
+                <option value="NEC">NEC</option>
+                <option value="Support">Support</option>
+                <option value="Management">Management</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button *ngIf="userUpdatedId >0" class="btn hvr-bounce-to-top dailogButtonClass" title="Update" (click)="onUpdateSubmit(addUserForm.value)"
+            [disabled]="addUserForm.invalid">
+            Update User
+          </button>
+          <button *ngIf="userUpdatedId ==0" class="btn hvr-bounce-to-top dailogButtonClass" (click)="onSubmit(addUserForm.value)" [disabled]="addUserForm.invalid">Add User</button>
+          <button type="button" class="btn hvr-bounce-to-top" data-dismiss="modal" aria-label="Close">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="adduserContainer bg-color01">
+  <div class="container-fluid pd-top-80">
+    <div class="row col-12">
+      <div class="headerName col-3">
+        <h3>Team Information</h3>
+      </div>
+      <div class="row userCountClass col-3">
+        <div class="headerName activeUserClass col-5">
+          <h3>Active Users: {{activeUserCount}}</h3>
+        </div>
+        <div class="headerName inactiveUserClass col-7">
+          <h3>Inactive Users: {{inactiveUserCount}}</h3>
+        </div>
+      </div>
+      <div class="row col-5 addUserButton">
+          <div class="col-4">
+             <!-- <button type="button" style="max-width: 120px; margin-right: 3px;" [routerLink]="['/resourceHistory']">History</button> -->
+          </div>
+        <div class="col-4">
+            <button type="button" data-toggle="modal" data-target="#adduserPopContainer" (click)="initAddUserForm()">Add User</button>
+        </div>
+        <div class="col-4">
+            <button type="button" (click)="excelReport()">Excel Export</button>
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="row addUserButtonTableData" *ngIf="fetchData.length > 0">
+      <div class="addUserFormLayout customizeRtsScrollBar addUserFormContainer">
+        <table datatable class="table rTsCustomizeTable">
+          <thead>
+            <tr>
+              <th>S.No.</th>
+              <th>Employee Code</th>
+              <th>Resource Name</th>
+              <th>Resource Email</th>
+              <th>Type of Resource</th>
+              <th>Team</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody class="text-center">
+            <ng-container *ngFor="let fetchuserData of fetchData; let i = index;">
+              <tr>
+                <td>
+                  <div ngClass="{{fetchuserData.leaveUserCSS}}">{{fetchData.indexOf(fetchuserData) + 1}}</div>
+                </td>
+                <td class="addUserName">
+                  <div ngClass="{{fetchuserData.leaveUserCSS}}">{{fetchuserData.employeeCode}}</div>
+                </td>
+                <td class="addUserName">
+                  <div ngClass="{{fetchuserData.leaveUserCSS}}">{{fetchuserData.user_name}}</div>
+                </td>
+                <td class="addUserName">
+                  <div ngClass="{{fetchuserData.leaveUserCSS}}">{{fetchuserData.email}}</div>
+                </td>
+                <td class="userSelectType">
+                  <div ngClass="{{fetchuserData.leaveUserCSS}}">{{fetchuserData.type_resource}}</div>
+                </td>
+                <td class="userSelectType">
+                  <div ngClass="{{fetchuserData.leaveUserCSS}}">{{fetchuserData.team}}</div>
+                </td>
+                <td class="addUserButtons">
+                  <div>
+                    <button class="btn form-group hvr-bounce-to-top" title="Edit" data-toggle="modal" data-target="#adduserPopContainer" (click)="onEditSubmit(fetchuserData)">
+                      <img src="assets/edit.svg" />
+                    </button>
+                  </div>
+                  <!-- <button class="btn form-group hvr-bounce-to-top" title="Delete" type="button" (click)="onDeleteSubmit(fetchuserData)">
+                    <img src="assets/delete.svg" />
+                  </button> -->
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="loader" *ngIf="loading">
+  <div class="loaderContainer">
+    <img src="assets/preloader.gif" />
+    <span>Wait...</span>
+  </div>
+</div>
