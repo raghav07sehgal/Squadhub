@@ -28,7 +28,7 @@
         "nodejs-jira-wrapper": "0.0.1",
         "nodejs-nodemailer-outlook": "^1.1.0",
         "nodemailer": "^4.7.0",
-        "npm": "^6.5.0",
+        "npm": "^6.14.6",
         "npm-git-install": "^0.3.0",
         "pem": "^1.12.6",
         "request": "^2.87.0",
