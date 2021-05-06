@@ -32,7 +32,7 @@
         "npm-git-install": "^0.3.0",
         "pem": "^1.12.6",
         "request": "^2.87.0",
-        "underscore": "^1.9.1",
+        "underscore": "^1.12.1",
         "xlsx-chart": "^0.3.0"
     },
     "devDependencies": {
