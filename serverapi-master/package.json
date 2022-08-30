@@ -6,7 +6,7 @@
         "axios": "^0.18.0",
         "body-parser": "^1.18.3",
         "cors": "^2.8.4",
-        "ews-javascript-api": "^0.9.3-dev.2",
+        "ews-javascript-api": "^0.9.6",
         "express": "^4.16.3",
         "express-http-to-https": "^1.1.4",
         "file-system": "^2.2.2",
